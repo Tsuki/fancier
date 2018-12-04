@@ -10,8 +10,8 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "inlineStyle": true,
-          "styleext": "scss",
+          "inlineStyle": false,
+          "styleext": "styl",
           "spec": false
         },
         "@schematics/angular:class": {
@@ -47,7 +47,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.styl"
             ],
             "scripts": []
           },
@@ -103,7 +103,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "src/styles.styl"
             ],
             "scripts": [],
             "assets": [

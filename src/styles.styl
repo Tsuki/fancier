@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+// CSS Style Guide: http://codeguide.co/#css
+@import "../node_modules/normalize.css/normalize.css";
+//$scheme    = hexo-config('scheme') ? hexo-config('scheme') : 'Muse';
+$scheme = 'Mist'
+
+//$custom_styles = hexo-config('custom_file_path.styles') ? "../../../../../" + hexo-config('custom_file_path.styles') : custom;
+//$custom_mixins = hexo-config('custom_file_path.mixins') ? "../../../../../" + hexo-config('custom_file_path.mixins') : custom;
+//$custom_variables = hexo-config('custom_file_path.variables') ? "../../../../../" + hexo-config('custom_file_path.variables') : custom;
+
+//$variables = base $scheme $custom_variables;
+//$mixins    = base $scheme $custom_mixins;
+$variables = base $scheme;
+$mixins = base $scheme;
+
+// Variables Layer
+// --------------------------------------------------
+for $variable in $variables
+  @import "css/_variables/" + $variable;
+
+// Mixins Layer
+// --------------------------------------------------
+for $mixin in $mixins
+  @import "css/_mixins/" + $mixin;
+
+// Common Layer
+// --------------------------------------------------
+
+// Scaffolding
+@import "css/_common/scaffolding";
+
+// Layout
+@import "css/_common/outline";
+
+// Components
+@import "css/_common/components";
+
+// Schemes Layer
+// --------------------------------------------------
+@import "css/_schemes/" + $scheme;
+
+// Custom Layer
+// --------------------------------------------------
+//@import "_custom/" + $custom_styles;
