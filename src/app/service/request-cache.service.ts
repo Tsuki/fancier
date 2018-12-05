@@ -1,12 +1,24 @@
 import {Injectable} from '@angular/core';
 import {HttpRequest, HttpResponse} from "@angular/common/http";
 
+export interface RequestCacheEntry {
+  url: string;
+  response: HttpResponse<any>;
+  lastRead: number;
+}
+
+export abstract class RequestCache {
+  abstract get(req: HttpRequest<any>): HttpResponse<any> | undefined;
+
+  abstract put(req: HttpRequest<any>, response: HttpResponse<any>): void
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class RequestCacheService {
+export class RequestCacheWithMap implements RequestCache {
   maxAge = 30000;
-  cache: Map<string, any>;
+  cache: Map<string, RequestCacheEntry>;
 
   constructor() {
     this.cache = new Map();

@@ -2,22 +2,17 @@ import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpR
 import {Injectable} from "@angular/core";
 import {Observable, of} from "rxjs";
 import {tap} from "rxjs/operators";
-import {RequestCacheService} from "../service/request-cache.service";
+import {RequestCache} from "../service/request-cache.service";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CachingInterceptor implements HttpInterceptor {
-  constructor(private cache: RequestCacheService) {
+  constructor(private cache: RequestCache) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    // continue if not cachable.
-    // if (!isCachable(req)) {
-    //   return next.handle(req);
-    // }
-
     const cachedResponse = this.cache.get(req);
     return cachedResponse ? of(cachedResponse) : this.sendRequest(req, next);
   }
