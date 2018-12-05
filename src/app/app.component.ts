@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {ApiService} from "./service/api.service";
+import {tap} from "rxjs/operators";
+import {HexoConfig, ThemeConfig} from "~/model/hexo-config.class";
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,13 @@ import {ApiService} from "./service/api.service";
 })
 export class AppComponent implements OnInit {
   title = 'fancier';
+  hexoConfig: HexoConfig;
+  theme: ThemeConfig;
+
 
   constructor(
     private translate: TranslateService,
+    private renderer: Renderer2,
     private api: ApiService) {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('default');
@@ -21,6 +27,18 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.api.fetchHexoConfig().subscribe();
+    this.renderer.addClass(document.body, 'container');
+    this.api.fetchHexoConfig().pipe(
+      tap(value => this.hexoConfig = value),
+      tap(() => this.theme = this.hexoConfig.theme_config),
+      tap(() => this.title = this.hexoConfig.title),
+      tap(() => {
+        if (this.theme.sidebar.position)
+          this.renderer.addClass(document.body, 'sidebar-position-' + this.theme.sidebar.position);
+        if (this.theme.motion.enable)
+          this.renderer.addClass(document.body, 'use-motion');
+        this.renderer.addClass(document.body, this.theme.scheme)
+      })
+    ).subscribe();
   }
 }
