@@ -5,13 +5,13 @@
 
         <div class="site-meta-headline" *ngIf="theme.custom_logo.image && theme.scheme === 'Muse'">
           <a>
-            <img class="custom-logo-image" src="{{ theme.custom_logo.image }}"
-                 alt="{{ hexoConfig.title }}"/>
+            <img class="custom-logo-image" [src]="theme.custom_logo.image"
+                 [alt]="hexoConfig.title"/>
           </a>
         </div>
 
         <div class="custom-logo-site-title">
-          <a href="{{ hexoConfig.root }}" class="brand" rel="start">
+          <a routerLink="hexoConfig.root" class="brand" rel="start">
             <span class="logo-line-before"><i></i></span>
             <span class="site-title">{{ hexoConfig.title }}</span>
             <span class="logo-line-after"><i></i></span>
