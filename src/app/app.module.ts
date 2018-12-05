@@ -3,11 +3,11 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {FaIconService, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HeaderComponent} from './components/header/header.component';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {CachingInterceptor} from './http-interceptors/caching-interceptor';
@@ -19,11 +19,9 @@ import {NotFoundComponent} from './views/not-found/not-found.component';
 import {CategoryComponent} from './views/category/category.component';
 import {PageComponent} from './views/page/page.component';
 import {TagComponent} from './views/tag/tag.component';
-import { SiteNavComponent } from './components/header/site-nav/site-nav.component';
+import {SiteNavComponent} from './components/header/site-nav/site-nav.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { SafePipe } from './pipe/safe.pipe';
-
-library.add(fas);
+import {SafePipe} from './pipe/safe.pipe';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -64,4 +62,9 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(
+    private faIconService: FaIconService) {
+    library.add(fas);
+    this.faIconService.defaultPrefix = 'fas';
+  }
 }

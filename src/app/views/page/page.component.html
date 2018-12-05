@@ -59,6 +59,19 @@
             </h1>
           </ng-template>
         </ng-container>
+
+        <div class="post-meta">
+          <span class="post-time">
+            <ng-container *ngIf="theme.post_meta.created_at">
+              <span class="post-meta-item-icon"><fa-icon class="fa" icon="calendar-alt"></fa-icon></span>
+              <span *ngIf="theme.post_meta.item_text" class="post-meta-item-text">{{ 'post.posted'|translate }}</span>
+            </ng-container>
+             <time [attr.datetime]="post.date|date" itemprop="dateCreated datePublished" title="title">
+               {{ post.date|date}}
+              </time>
+          </span>
+        </div>
+
       </header>
     </article>
   </ng-container>
