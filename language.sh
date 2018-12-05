@@ -1,5 +1,7 @@
-#! /bin/sh
-for var in "$@/src/languages"
+#! /bin/bash
+for var in ./src/languages/*.yml
 do
-    js-yaml $var > "./src/assets/i18n/${var%%.*}.json"
+  echo ${var}
+  fbname=$(basename "$var" .yml)
+  js-yaml ${var} > "./src/assets/i18n/$fbname.json"
 done
