@@ -20,6 +20,7 @@ import {CategoryComponent} from './views/category/category.component';
 import {PageComponent} from './views/page/page.component';
 import {TagComponent} from './views/tag/tag.component';
 import { SiteNavComponent } from './components/header/site-nav/site-nav.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 library.add(fas);
 
@@ -41,6 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,

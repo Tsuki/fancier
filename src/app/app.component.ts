@@ -35,8 +35,6 @@ export class AppComponent implements OnInit {
       tap(() => {
         if (this.theme.sidebar.position)
           this.renderer.addClass(document.body, 'sidebar-position-' + this.theme.sidebar.position);
-        if (this.theme.motion.enable)
-          this.renderer.addClass(document.body, 'use-motion');
         this.renderer.addClass(document.body, this.theme.scheme)
       })
     ).subscribe();
