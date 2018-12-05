@@ -11,7 +11,7 @@ const pagination = require('hexo-pagination');
 
 function filterHTMLTags(str) {
   return str ? str
-    .replace(/\<(?!img|br).*?\>/g, '')
+    .replace(/<(?!img|br).*?>/g, '')
     .replace(/\r?\n|\r/g, '')
     .replace(/<img(.*)>/g, ' [Figure] ') : null
 }
@@ -78,6 +78,7 @@ function generator(cfg, site) {
         date: posts_props('date', post.date),
         updated: posts_props('updated', post.updated),
         comments: posts_props('comments', post.comments),
+        permalink: posts_props('permalink', post.permalink),
         path: posts_props('path', 'api/articles/' + post.slug + '.json'),
         excerpt: posts_props('excerpt', post.excerpt),
         keywords: posts_props('keywords', cfg.keywords),
@@ -87,6 +88,7 @@ function generator(cfg, site) {
         link: posts_props('link', post.link),
         raw: posts_props('raw', post.raw),
         photos: posts_props('photos', post.photos),
+        type: posts_props('type', post.type),
         categories: posts_props('categories', function () {
           return post.categories.map(function (cat) {
             return {

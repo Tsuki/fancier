@@ -1,2 +1,22 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div [ngClass]="bodyClass" [lang]="lang">
+  <div class="headband"></div>
+  <app-header></app-header>
+
+  <!--TODO github-banner-->
+  <main id="main" class="main">
+    <div class="main-inner">
+      <div class="content-wrap" *ngIf="theme">
+        <ng-template [ngIf]="theme.scheme === 'Pisces' || theme.scheme === 'Gemini'">
+          <!--TODO sub-menu.swig-->
+        </ng-template>
+        <div id="content" class="content">
+          <router-outlet></router-outlet>
+          <!--TODO comments.swig-->
+        </div>
+        <ng-template [ngIf]="theme.sidebar.display !== 'remove'">
+          <!--TODO sidebar-->
+        </ng-template>
+      </div>
+    </div>
+  </main>
+</div>

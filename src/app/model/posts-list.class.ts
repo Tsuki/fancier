@@ -53,6 +53,10 @@ export class Post {
   content: string | null = null;
   text = '';
   link = '';
+  type = '';
+  sticky = 0;
+  source = '';
+  permalink = '';
   raw: string | null = null;
   photos: string[] = [];
   categories: Category[] = [];
