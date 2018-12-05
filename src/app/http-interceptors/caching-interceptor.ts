@@ -2,7 +2,7 @@ import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpR
 import {Injectable} from "@angular/core";
 import {Observable, of} from "rxjs";
 import {tap} from "rxjs/operators";
-import {RequestCache} from "../service/request-cache.service";
+import {RequestCache} from "~/service/request-cache.service";
 
 
 @Injectable({

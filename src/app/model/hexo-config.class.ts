@@ -60,7 +60,7 @@ export interface ThemeConfig {
   canonical: boolean;
   seo: boolean;
   index_with_subtitle: boolean;
-  menu: Menu;
+  menu: { [key: string]: string };
   menu_settings: Menusettings;
   scheme: string;
   site_state: boolean;
@@ -489,11 +489,6 @@ export interface Socialicons {
 export interface Menusettings {
   icons: boolean;
   badges: boolean;
-}
-
-export interface Menu {
-  home: string;
-  archives: string;
 }
 
 export interface Footer {

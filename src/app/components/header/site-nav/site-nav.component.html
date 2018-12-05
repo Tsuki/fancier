@@ -1,0 +1,13 @@
+<nav class="site-nav">
+  <ul id="menu" class="menu" *ngIf="theme.menu">
+    <li *ngFor="let menu of theme.menu|keyvalue:noOrder"
+        class="menu-item menu-item-{{ menu.value.split('||')[0].replace(' ', '-').trim() }}">
+      <a [routerLink]="menu.value.split('||')[0].trim()" rel="section">
+        <fa-icon class="menu-item-icon" [icon]="menu.value.split('||')[1].trim()"></fa-icon>
+        <br/>{{'menu.'+menu.key|translate}}
+      </a>
+
+      <!--TODO <span class="badge">{{ count }}</span>-->
+    </li>
+  </ul>
+</nav>

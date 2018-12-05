@@ -1,47 +1,40 @@
-<header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-  <div class="header-inner"><div class="site-brand-wrapper">
-    <div class="site-meta ">
-      <div class="custom-logo-site-title">
-        <a href="/" class="brand" rel="start" data-pjax-state="" style="opacity: 1;">
-          <span class="logo-line-before"><i class="" style="transform: translateX(100%);"></i></span>
-          <span class="site-title" style="opacity: 1; top: 0;">ツカツキ アリス</span>
-          <span class="logo-line-after"><i class="" style="transform: translateX(-100%);"></i></span>
-        </a>
+<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" *ngIf="theme">
+  <div class="header-inner">
+    <div class="site-brand-wrapper" [class.custom-logo]="theme.custom_logo.enabled">
+      <div class="site-meta">
+
+        <div class="site-meta-headline" *ngIf="theme.custom_logo.image && theme.scheme === 'Muse'">
+          <a>
+            <img class="custom-logo-image" src="{{ theme.custom_logo.image }}"
+                 alt="{{ hexoConfig.title }}"/>
+          </a>
+        </div>
+
+        <div class="custom-logo-site-title">
+          <a href="{{ hexoConfig.root }}" class="brand" rel="start">
+            <span class="logo-line-before"><i></i></span>
+            <span class="site-title">{{ hexoConfig.title }}</span>
+            <span class="logo-line-after"><i></i></span>
+          </a>
+        </div>
+
+
+        <h1 class="site-subtitle" itemprop="description" *ngIf="hexoConfig.subtitle && theme.seo">
+          {{ hexoConfig.subtitle }}
+        </h1>
+        <h1 class="site-subtitle" *ngIf="hexoConfig.subtitle && !theme.seo">{{ hexoConfig.subtitle }}</h1>
+
+      </div>
+
+      <div class="site-nav-toggle">
+        <button [attr.aria-label]="'accessibility.nav_toggle'|translate">
+          <span class="btn-bar"></span>
+          <span class="btn-bar"></span>
+          <span class="btn-bar"></span>
+        </button>
       </div>
     </div>
-    <div class="site-nav-toggle">
-      <button aria-label="ナビゲーションバーの切り替え">
-        <span class="btn-bar"></span>
-        <span class="btn-bar"></span>
-        <span class="btn-bar"></span>
-      </button>
-    </div>
-  </div>
-    <nav class="site-nav">
-      <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);">
-          <a href="/" rel="section" data-pjax-state="">
-            <fa-icon [icon]="'home'" ></fa-icon> <br>ホーム</a>
-        </li>
-        <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
-          <a href="/archives/" rel="section" data-pjax-state="">
-            <fa-icon [icon]="'archive'" ></fa-icon> <br>アーカイブ</a>
-        </li>
-        <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);">
-          <a href="/categories/" rel="section" data-pjax-state="">
-            <fa-icon [icon]="'th'" ></fa-icon> <br>カテゴリ</a>
-        </li>
-        <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">
-          <a href="/about/" rel="section" data-pjax-state="">
-            <fa-icon [icon]="'user'" ></fa-icon> <br>について</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
 
-<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="header-inner">
-
+    <app-site-nav [hexoConfig]="hexoConfig" [theme]="theme"></app-site-nav>
   </div>
 </header>

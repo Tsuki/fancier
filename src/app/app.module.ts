@@ -19,6 +19,7 @@ import {NotFoundComponent} from './views/not-found/not-found.component';
 import {CategoryComponent} from './views/category/category.component';
 import {PageComponent} from './views/page/page.component';
 import {TagComponent} from './views/tag/tag.component';
+import { SiteNavComponent } from './components/header/site-nav/site-nav.component';
 
 library.add(fas);
 
@@ -35,7 +36,8 @@ export function createTranslateLoader(http: HttpClient) {
     NotFoundComponent,
     CategoryComponent,
     PageComponent,
-    TagComponent
+    TagComponent,
+    SiteNavComponent
   ],
   imports: [
     BrowserModule,
