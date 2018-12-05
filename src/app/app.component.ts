@@ -1,8 +1,9 @@
 import {Component, OnInit, Renderer2} from '@angular/core';
-import {TranslateService} from "@ngx-translate/core";
-import {ApiService} from "./service/api.service";
-import {tap} from "rxjs/operators";
-import {HexoConfig, ThemeConfig} from "~/model/hexo-config.class";
+import {TranslateService} from '@ngx-translate/core';
+import {ApiService} from './service/api.service';
+import {tap} from 'rxjs/operators';
+import {HexoConfig, ThemeConfig} from '~/model/hexo-config.class';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,6 @@ import {HexoConfig, ThemeConfig} from "~/model/hexo-config.class";
   styles: []
 })
 export class AppComponent implements OnInit {
-  title = 'fancier';
   hexoConfig: HexoConfig;
   theme: ThemeConfig;
 
@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private renderer: Renderer2,
+    private titleService: Title,
     private api: ApiService) {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('default');
@@ -31,11 +32,12 @@ export class AppComponent implements OnInit {
     this.api.fetchHexoConfig().pipe(
       tap(value => this.hexoConfig = value),
       tap(() => this.theme = this.hexoConfig.theme_config),
-      tap(() => this.title = this.hexoConfig.title),
+      tap(() => this.titleService.setTitle(this.hexoConfig.title)),
       tap(() => {
-        if (this.theme.sidebar.position)
+        if (this.theme.sidebar.position) {
           this.renderer.addClass(document.body, 'sidebar-position-' + this.theme.sidebar.position);
-        this.renderer.addClass(document.body, this.theme.scheme)
+        }
+        this.renderer.addClass(document.body, this.theme.scheme);
       })
     ).subscribe();
   }
