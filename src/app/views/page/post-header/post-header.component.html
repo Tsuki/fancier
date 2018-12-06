@@ -14,7 +14,7 @@
   <ng-container *ngIf="isIndex">
     <span *ngIf="post.sticky>0" class="post-sticky-flag" [title]="'post.sticky'|translate">
       <fa-icon class="fa" icon="thumb-tack"></fa-icon></span>
-    <a class="post-title-link" [routerLink]="post.path" itemprop="url">
+    <a class="post-title-link" [routerLink]="post.permalink" itemprop="url">
       {{ post.title || ('post.untitled'|translate) }}
     </a>
   </ng-container>
