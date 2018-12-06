@@ -1,4 +1,60 @@
-<ng-container *ngIf="post.link">
+<header class="post-header">
+  <ng-container *ngIf="!(isIndex&& post.type === 'quote' &&  !post.title)">
+    <h2 class="post-title" itemprop="name headline">
+      <ng-container *ngIf="post.link;then isLink else notLink"></ng-container>
+    </h2>
+  </ng-container>
+
+  <div class="post-meta">
+      <span class="post-time">
+        <ng-container *ngIf="theme.post_meta.created_at">
+          <span class="post-meta-item-icon"><fa-icon class="fa" [icon]="['far', 'calendar-alt']"></fa-icon>&nbsp;</span>
+          <span *ngIf="theme.post_meta.item_text" class="post-meta-item-text">{{ 'post.posted'|translate }} </span>
+          <time [title]="timeTileCreated" [attr.datetime]="post.date|date" itemprop="dateCreated datePublished">
+           {{post.date|date}}
+          </time>
+        </ng-container>
+        <ng-container *ngIf="theme.post_meta.updated_at && isUpdated">
+          <span class="post-meta-divider" *ngIf="theme.post_meta.created_at">|&nbsp;</span>
+          <span class="post-meta-item-icon"><fa-icon class="fa" [icon]="['far', 'calendar-check']"></fa-icon>
+            &nbsp;</span>
+          <span class="post-meta-item-text" *ngIf="theme.post_meta.item_text">{{'post.edited'|translate}} </span>
+          <time [title]="timeTileModified" [attr.datetime]="post.updated|date" itemprop="dateModified">
+            {{post.updated|date}}
+          </time>
+        </ng-container>
+      </span>
+    <span class="post-category" *ngIf="post.categories && post.categories.length && theme.post_meta.categories">
+        <span class="post-meta-divider" *ngIf="theme.post_meta.created_at || theme.post_meta.updated_at">|&nbsp;</span>
+        <span class="post-meta-item-icon"><fa-icon class="fa" [icon]="['far', 'folder']"></fa-icon>&nbsp;</span>
+        <span class="post-meta-item-text" *ngIf="theme.post_meta.item_text">{{'post.in'|translate}}&nbsp;</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"
+              *ngFor="let cat of post.categories; last as isLast">
+          <a [routerLink]="cat.path" itemprop="url" rel="index">
+            <span itemprop="name">{{ cat.name }}</span>
+          </a>
+          <ng-container *ngIf="!isLast">{{'symbol.comma'|translate}}</ng-container>
+        </span>
+      </span>
+    <ng-container *ngIf="post.comments">
+      <span class="post-comments-count">
+        <span class="post-meta-divider">|&nbsp;</span>
+        <span class="post-meta-item-icon"><fa-icon class="fa" [icon]="['far', 'comment']"></fa-icon>&nbsp;</span>
+        <!--TODO comments count-->
+        <!--<a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">-->
+        <!--<span class="post-meta-item-text">{{ __('post.comments_count') + __('symbol.colon') }}</span> -->
+        <!--<span class="post-comments-count fb-comments-count" data-href="{{ post.permalink }}" itemprop="commentCount">0</span>-->
+        <!--</a>-->
+      </span>
+      <!--TODO PageView-->
+      <div class="post-description" *ngIf="post.description && (!theme.excerpt_description ||!isIndex)">{{ post.description }}</div>
+    </ng-container>
+  </div>
+
+
+</header>
+
+<ng-template #isLink>
   <ng-container *ngIf="post.sticky>0">
     {{ post.sticky }}
     <span class="post-sticky-flag" [title]="'post.sticky'|translate"><i class="fa fa-thumb-tack"></i></span>
@@ -8,9 +64,9 @@
     {{ post.title || post.link }}
     <i class="fa fa-external-link"></i>
   </a>
-</ng-container>
+</ng-template>
 
-<ng-container *ngIf="!post.link">
+<ng-template #notLink>
   <ng-container *ngIf="isIndex">
     <span *ngIf="post.sticky>0" class="post-sticky-flag" [title]="'post.sticky'|translate">
       <fa-icon class="fa" icon="thumb-tack"></fa-icon>&nbsp;</span>
@@ -26,4 +82,4 @@
       <i class="fa fa-pencil"></i>
     </a>
   </ng-container>
-</ng-container>
+</ng-template>
