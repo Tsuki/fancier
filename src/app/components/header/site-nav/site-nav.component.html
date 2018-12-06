@@ -6,7 +6,7 @@
 
         <a rel="section" [routerLink]="menu.value.split('||')[0].trim()">
           <fa-icon class="menu-item-icon fa" [icon]="menu.value.split('||')[1].trim()"></fa-icon>
-          <br/>{{'menu.' + menu.key|translate}}
+          &nbsp;<br/>{{'menu.' + menu.key|translate}}
         </a>
 
         <!--TODO <span class="badge">{{ count }}</span>-->

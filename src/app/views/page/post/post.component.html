@@ -22,15 +22,35 @@
     <div class="post-meta">
       <span class="post-time">
         <ng-container *ngIf="theme.post_meta.created_at">
-          <span class="post-meta-item-icon"><fa-icon class="fa" icon="calendar-alt"></fa-icon></span>
-          <span *ngIf="theme.post_meta.item_text" class="post-meta-item-text">{{ 'post.posted'|translate }}</span>
-        </ng-container>
-         <time [attr.datetime]="post.date|date" itemprop="dateCreated datePublished" title="title">
+          <span class="post-meta-item-icon"><fa-icon class="fa" [icon]="['far', 'calendar-alt']"></fa-icon>&nbsp;</span>
+          <span *ngIf="theme.post_meta.item_text" class="post-meta-item-text">{{ 'post.posted'|translate }} </span>
+          <time [title]="timeTileCreated" [attr.datetime]="post.date|date" itemprop="dateCreated datePublished">
            {{post.date|date}}
           </time>
+        </ng-container>
+        <ng-container *ngIf="theme.post_meta.updated_at && isUpdated">
+          <span class="post-meta-divider" *ngIf="theme.post_meta.created_at">|</span>
+          <span class="post-meta-item-icon"><fa-icon class="fa" [icon]="['far', 'calendar-check']"></fa-icon>
+            &nbsp;</span>
+          <span class="post-meta-item-text" *ngIf="theme.post_meta.item_text">{{'post.edited'|translate}} </span>
+          <time [title]="timeTileModified" [attr.datetime]="post.updated|date" itemprop="dateModified">
+            {{post.updated|date}}
+          </time>
+        </ng-container>
+      </span>
+      <span class="post-category" *ngIf="post.categories && post.categories.length && theme.post_meta.categories">
+        <span class="post-meta-divider" *ngIf="theme.post_meta.created_at || theme.post_meta.updated_at">|</span>
+        <span class="post-meta-item-icon"><fa-icon class="fa" [icon]="['far', 'folder']"></fa-icon>&nbsp;</span>
+        <span class="post-meta-item-text" *ngIf="theme.post_meta.item_text">{{'post.in'|translate}}&nbsp;</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"
+              *ngFor="let cat of post.categories; last as isLast">
+          <a [routerLink]="cat.path" itemprop="url" rel="index">
+            <span itemprop="name">{{ cat.name }}</span>
+          </a>
+          <ng-container *ngIf="!last">{{'symbol.comma'|translate}}</ng-container>
+        </span>
       </span>
     </div>
-
 
 
   </header>

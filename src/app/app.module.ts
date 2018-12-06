@@ -6,7 +6,8 @@ import {AppComponent} from './app.component';
 import {FaIconService, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HeaderComponent} from './components/header/header.component';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {fas} from '@fortawesome/free-solid-svg-icons';
+import {fas} from '@fortawesome/free-solid-svg-icons'
+import {far} from '@fortawesome/free-regular-svg-icons'
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
@@ -68,7 +69,7 @@ export function createTranslateLoader(http: HttpClient) {
 export class AppModule {
   constructor(
     private faIconService: FaIconService) {
-    library.add(fas);
+    library.add(fas, far);
     this.faIconService.defaultPrefix = 'fas';
   }
 }
