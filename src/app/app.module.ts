@@ -13,7 +13,7 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import {CachingInterceptor} from './http-interceptors/caching-interceptor';
 import {RequestCache, RequestCacheWithMap} from './service/request-cache.service';
 import {ApiService} from './service/api.service';
-import {PostComponent} from './views/post/post.component';
+import {PostPageComponent} from './views/post/post-page.component';
 import {ArticleComponent} from './views/article/article.component';
 import {NotFoundComponent} from './views/not-found/not-found.component';
 import {CategoryComponent} from './views/category/category.component';
@@ -22,6 +22,7 @@ import {TagComponent} from './views/tag/tag.component';
 import {SiteNavComponent} from './components/header/site-nav/site-nav.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SafePipe} from './pipe/safe.pipe';
+import { PostHeaderComponent } from './views/page/post-header/post-header.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,14 +32,15 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     HeaderComponent,
-    PostComponent,
+    PostPageComponent,
     ArticleComponent,
     NotFoundComponent,
     CategoryComponent,
     PageComponent,
     TagComponent,
     SiteNavComponent,
-    SafePipe
+    SafePipe,
+    PostHeaderComponent
   ],
   imports: [
     BrowserModule,

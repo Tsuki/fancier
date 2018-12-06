@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PostComponent} from './views/post/post.component';
+import {PostPageComponent} from './views/post/post-page.component';
 import {NotFoundComponent} from './views/not-found/not-found.component';
 import {ArticleComponent} from './views/article/article.component';
 import {PageComponent} from './views/page/page.component';
@@ -22,7 +22,7 @@ const routes: Routes = [
     component: TagComponent
   }, {
     path: 'about',
-    component: PostComponent
+    component: PostPageComponent
   }, {
     path: '404',
     component: NotFoundComponent

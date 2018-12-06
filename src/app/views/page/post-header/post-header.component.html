@@ -1,0 +1,29 @@
+<ng-container *ngIf="post.link">
+  <ng-container *ngIf="post.sticky>0">
+    {{ post.sticky }}
+    <span class="post-sticky-flag" [title]="'post.sticky'|translate"><i class="fa fa-thumb-tack"></i></span>
+  </ng-container>
+  <a class="post-title-link post-title-link-external" target="_blank" [href]="post.link|safe"
+     itemprop="url">
+    {{ post.title || post.link }}
+    <i class="fa fa-external-link"></i>
+  </a>
+</ng-container>
+
+<ng-container *ngIf="!post.link">
+  <ng-container *ngIf="is_index">
+    <span *ngIf="post.sticky>0" class="post-sticky-flag" [title]="'post.sticky'|translate">
+      <fa-icon class="fa" icon="thumb-tack"></fa-icon></span>
+    <a class="post-title-link" [routerLink]="post.path" itemprop="url">
+      {{ post.title || ('post.untitled'|translate) }}
+    </a>
+  </ng-container>
+  <ng-container *ngIf="!is_index">
+    {{ post.title || ('post.untitled'|translate) }}
+    <a *ngIf="theme.post_edit.enable" [href]="theme.post_edit.url+post.source.slice(7)|safe"
+       class="post-edit-link"
+       [title]="'post.edit'|translate" target="_blank">
+      <i class="fa fa-pencil"></i>
+    </a>
+  </ng-container>
+</ng-container>
