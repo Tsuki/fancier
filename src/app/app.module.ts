@@ -25,6 +25,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SafePipe} from './pipe/safe.pipe';
 import {PostHeaderComponent} from './views/page/post-header/post-header.component';
 import {PostComponent} from './views/page/post/post.component';
+import { PostBodyComponent } from './views/page/post-body/post-body.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,7 +44,8 @@ export function createTranslateLoader(http: HttpClient) {
     SiteNavComponent,
     SafePipe,
     PostHeaderComponent,
-    PostComponent
+    PostComponent,
+    PostBodyComponent
   ],
   imports: [
     BrowserModule,
