@@ -1,5 +1,5 @@
 <div class="reading-progress-bar" *ngIf="theme?.reading_progress.enable && !isIndex"></div>
-<article [ngClass]="['post','post-type-normal']" itemscope itemtype="http://schema.org/Article">
+<article itemscope itemtype="http://schema.org/Article">
   <div class="post-block">
     <link itemprop="mainEntityOfPage" [href]="post.permalink|safe">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">

@@ -1,9 +1,53 @@
 <ng-container *ngIf="post.photos && post.photos.length">
   <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-    <a class="post-gallery-img fancybox" *ngFor="let photo of post.photos"
-       [href]="photo" rel="gallery_{{ post._id }}"
-       itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-      <img [src]="photo" itemprop="contentUrl"/>
-    </a>
+    <ng-container *ngFor="let photo of post.photos; let i=index">
+      <div class="post-gallery-row">
+        <a rel="gallery_{{post._id}}" itemscope [href]="photo" itemtype="http://schema.org/ImageObject"
+           itemprop="url"> </a>
+        <!--TODO multiple image fix-->
+        <img class="post-gallery-img" [src]="photo" (click)="open(i)" itemprop="contentUrl"/>
+      </div>
+    </ng-container>
+
   </div>
+</ng-container>
+
+<ng-container *ngIf="isIndex">
+  <ng-container [ngSwitch]="readMoreType">
+
+    <ng-container *ngSwitchCase="1">
+      {{post.description}}
+      <div class="post-button text-center">
+        <a class="btn" [routerLink]="post.permalink">
+          {{'post.read_more'|translate}} &raquo;
+        </a>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="2">
+      <div [innerHtml]="post.excerpt"></div>
+      <div class="post-button text-center">
+        <a class="btn" [routerLink]="post.permalink" rel="contents">
+          {{'post.read_more'|translate}} &raquo;
+        </a>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="3">
+      <!--<div [innerHtml]="auto_excerpt"></div>-->
+      {{auto_excerpt}}
+      <div class="post-button text-center">
+        <a class="btn" [routerLink]="post.permalink" rel="contents">
+          {{'post.read_more'|translate}} &raquo;
+        </a>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="4">
+      <a [routerLink]="post.path" *ngIf="post.type === 'picture'; else content">{{ post.content }}</a>
+      <ng-template #content><div [innerHtml]="post.content"></div></ng-template>
+    </ng-container>
+
+  </ng-container>
+
 </ng-container>

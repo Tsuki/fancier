@@ -5,7 +5,7 @@ import * as moment from 'moment';
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
-  selector: 'app-post',
+  selector: 'div[app-post]',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.styl']
 })
