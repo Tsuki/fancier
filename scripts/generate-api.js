@@ -38,6 +38,7 @@ function generator(cfg, site) {
       posts_size: cfg.per_page,
       posts_props: {
         title: true,
+        description: true,
         slug: true,
         date: true,
         updated: true,
@@ -51,6 +52,9 @@ function generator(cfg, site) {
         permalink: true,
         excerpt: true,
         content: true,
+        type: true,
+        sticky: true,
+        source: true,
         categories: true,
         tags: true
       },
@@ -75,6 +79,7 @@ function generator(cfg, site) {
     postMap = function (post) {
       return {
         title: posts_props('title', post.title),
+        description: posts_props('description', post.description),
         slug: posts_props('slug', post.slug),
         date: posts_props('date', post.date),
         updated: posts_props('updated', post.updated),
@@ -90,6 +95,8 @@ function generator(cfg, site) {
         raw: posts_props('raw', post.raw),
         photos: posts_props('photos', post.photos),
         type: posts_props('type', post.type),
+        sticky: posts_props('sticky', post.sticky),
+        source: posts_props('source', post.source),
         categories: posts_props('categories', function () {
           return post.categories.map(function (cat) {
             return {

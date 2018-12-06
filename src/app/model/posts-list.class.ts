@@ -42,6 +42,7 @@ export class SpecificPostsList {
 
 export class Post {
   title = '';
+  description = '';
   slug = '';
   date = '';
   updated = '';
