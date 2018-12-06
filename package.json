@@ -27,6 +27,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "add": "^2.0.6",
     "core-js": "^2.5.4",
+    "moment": "^2.22.2",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
