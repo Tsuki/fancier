@@ -5,6 +5,7 @@
 
 'use strict';
 
+// noinspection NpmUsedModulesInstalled
 const pagination = require('hexo-pagination');
 
 // const _pick = require('lodash.pick');
@@ -78,6 +79,7 @@ function generator(cfg, site) {
 
     postMap = function (post) {
       return {
+        _id : post._id,
         title: posts_props('title', post.title),
         description: posts_props('description', post.description),
         slug: posts_props('slug', post.slug),

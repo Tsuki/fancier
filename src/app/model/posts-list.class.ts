@@ -41,6 +41,7 @@ export class SpecificPostsList {
 
 
 export class Post {
+  _id = '';
   title = '';
   description = '';
   slug = '';
