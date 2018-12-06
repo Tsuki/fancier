@@ -79,7 +79,7 @@ function generator(cfg, site) {
 
     postMap = function (post) {
       return {
-        _id : post._id,
+        _id: post._id,
         title: posts_props('title', post.title),
         description: posts_props('description', post.description),
         slug: posts_props('slug', post.slug),
@@ -166,6 +166,14 @@ function generator(cfg, site) {
 
 
   if (restful.site) {
+    cfg.posts_links = posts.map(post => ({
+      link: decodeURIComponent(new URL(post.permalink).pathname),
+      path: '/api/articles/' + post.slug + '.json'
+    }));
+    cfg.pages_links = site.pages.filter(page => !page.type).map(page => ({
+      link: decodeURIComponent(new URL(page.permalink).pathname).replace(/\/index\.html$/, '/').replace(/\.html$/, ''),
+      path: '/api/pages/' + page.source.replace(/\.md$/, '.json')
+    }));
     apiData.push({
       path: 'api/site.json',
       data: JSON.stringify(/*restful.site instanceof Array ? _pick(cfg, restful.site) :*/ cfg)
