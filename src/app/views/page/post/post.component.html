@@ -1,0 +1,36 @@
+<div class="reading-progress-bar" *ngIf="theme?.reading_progress.enable && !is_index"></div>
+<article [ngClass]="['post','post-type-normal']" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" [href]="post.permalink|safe">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" [content]="hexoConfig.author">
+      <meta itemprop="description" [content]="hexoConfig.description">
+      <meta itemprop="image" [content]="theme.avatar.url || theme.images + '/avatar.gif'">
+    </span>
+  </div>
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" [content]="hexoConfig.title">
+  </span>
+  <!--TODO headlessPost-->
+  <header class="post-header">
+
+    <ng-container *ngIf="!(is_index&& post.type === 'quote' &&  !post.title)">
+      <h2 class="post-title" itemprop="name headline">
+        <app-post-header [post]="post" [hexoConfig]="hexoConfig" [theme]="theme"></app-post-header>
+      </h2>
+    </ng-container>
+
+    <div class="post-meta">
+      <span class="post-time">
+        <ng-container *ngIf="theme.post_meta.created_at">
+          <span class="post-meta-item-icon"><fa-icon class="fa" icon="calendar-alt"></fa-icon></span>
+          <span *ngIf="theme.post_meta.item_text" class="post-meta-item-text">{{ 'post.posted'|translate }}</span>
+        </ng-container>
+         <time [attr.datetime]="post.date|date" itemprop="dateCreated datePublished" title="title">
+           {{post.date|date}}
+          </time>
+      </span>
+    </div>
+
+  </header>
+</article>
