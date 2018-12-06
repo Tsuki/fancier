@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PostPageComponent} from './views/post-page/post-page.component';
 import {NotFoundComponent} from './views/not-found/not-found.component';
 import {ArchiveComponent} from './views/archive/archive.component';
 import {PageComponent} from './views/page/page.component';
@@ -10,7 +9,7 @@ import {TagComponent} from './views/tag/tag.component';
 const routes: Routes = [
   {
     path: '',
-    component: PageComponent
+    component: PageComponent, data: {isIndex: true}
   }, {
     path: 'archives',
     component: ArchiveComponent

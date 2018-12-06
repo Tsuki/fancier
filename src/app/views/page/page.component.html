@@ -1,5 +1,5 @@
 <section id="posts" class="posts-expand" *ngIf="postsList && hexoConfig">
   <ng-container *ngFor="let post of postsList.data">
-    <app-post [post]="post" [hexoConfig]="hexoConfig" [theme]="theme"></app-post>
+    <app-post [post]="post" [hexoConfig]="hexoConfig" [theme]="theme" [isIndex]="isIndex"></app-post>
   </ng-container>
 </section>

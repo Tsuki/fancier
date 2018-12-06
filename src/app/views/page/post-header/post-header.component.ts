@@ -12,6 +12,7 @@ export class PostHeaderComponent implements OnInit {
   @Input() hexoConfig: HexoConfig;
   @Input() theme: ThemeConfig;
   @Input() post: Post;
+  @Input() isIndex: boolean;
 
   constructor() {
   }

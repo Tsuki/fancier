@@ -1,6 +1,6 @@
 <div [ngClass]="bodyClass" [lang]="lang">
   <div class="headband"></div>
-  <app-header></app-header>
+  <app-header [hexoConfig]="hexoConfig" [theme]="theme" *ngIf="theme"></app-header>
 
   <!--TODO github-banner-->
   <main id="main" class="main">

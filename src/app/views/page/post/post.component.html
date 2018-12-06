@@ -1,4 +1,4 @@
-<div class="reading-progress-bar" *ngIf="theme?.reading_progress.enable && !is_index"></div>
+<div class="reading-progress-bar" *ngIf="theme?.reading_progress.enable && !isIndex"></div>
 <article [ngClass]="['post','post-type-normal']" itemscope itemtype="http://schema.org/Article">
   <div class="post-block">
     <link itemprop="mainEntityOfPage" [href]="post.permalink|safe">
@@ -13,10 +13,9 @@
   </span>
   <!--TODO headlessPost-->
   <header class="post-header">
-
-    <ng-container *ngIf="!(is_index&& post.type === 'quote' &&  !post.title)">
+    <ng-container *ngIf="!(isIndex&& post.type === 'quote' &&  !post.title)">
       <h2 class="post-title" itemprop="name headline">
-        <app-post-header [post]="post" [hexoConfig]="hexoConfig" [theme]="theme"></app-post-header>
+        <app-post-header [post]="post" [hexoConfig]="hexoConfig" [theme]="theme" [isIndex]="isIndex"></app-post-header>
       </h2>
     </ng-container>
 

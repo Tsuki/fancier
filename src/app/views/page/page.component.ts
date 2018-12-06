@@ -3,6 +3,7 @@ import {HexoConfig, ThemeConfig} from '~/model/hexo-config.class';
 import {ApiService} from '~/service/api.service';
 import {tap} from 'rxjs/operators';
 import {PostsList} from '~/model/posts-list.class';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-page',
@@ -13,11 +14,13 @@ export class PageComponent implements OnInit {
   hexoConfig: HexoConfig;
   theme: ThemeConfig;
   postsList: PostsList;
-  is_index = true;
+  isIndex = false;
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private route: ActivatedRoute
   ) {
+    this.isIndex = route.snapshot.data['isIndex']
   }
 
   ngOnInit() {

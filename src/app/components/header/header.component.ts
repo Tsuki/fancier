@@ -1,8 +1,6 @@
-import {AfterViewInit, Component, HostBinding, OnInit} from '@angular/core';
-import {ApiService} from "~/service/api.service";
+import {AfterViewInit, Component, HostBinding, Input, OnInit} from '@angular/core';
 import {HexoConfig, ThemeConfig} from "~/model/hexo-config.class";
-import {tap} from "rxjs/operators";
-import {animate, group, query, stagger, state, style, transition, trigger} from "@angular/animations";
+import {animate, group, query, stagger, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-header',
@@ -28,23 +26,16 @@ import {animate, group, query, stagger, state, style, transition, trigger} from 
   ]
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-  hexoConfig: HexoConfig;
-  theme: ThemeConfig;
 
-  @HostBinding('@header')
-  useMotion = false;
+  @Input() hexoConfig: HexoConfig;
+  @Input() theme: ThemeConfig;
+  @HostBinding('@header') useMotion;
 
-  constructor(
-    private api: ApiService
-  ) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.api.fetchHexoConfig().pipe(
-      tap(value => this.hexoConfig = value),
-      tap(() => this.theme = this.hexoConfig.theme_config),
-      tap(() => this.useMotion = this.theme.motion.enable)
-    ).subscribe();
+    this.useMotion = this.theme.motion.enable
   }
 
   ngAfterViewInit(): void {
