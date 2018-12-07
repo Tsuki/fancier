@@ -15,6 +15,7 @@ export interface Tag extends Basic {
 export interface Post {
   _id: string;
   title: string;
+  type: string;
   description: string;
   slug: string;
   date: string;
@@ -44,6 +45,7 @@ export interface PostsList {
 
 export interface Page {
   title: string;
+  type: string;
   date: string;
   updated: string;
   comments: boolean;
