@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "prod": "ng build --prod",
+    "build": "ng build --prod --extraWebpackConfig webpack.extra.js",
+    "postbuild": "cp source/index.html layout",
+    "bundle-report": "webpack-bundle-analyzer source/stats.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -28,6 +29,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "core-js": "^2.5.4",
     "moment": "^2.22.2",
+    "ngx-build-plus": "^7.3.0",
     "ngx-lightbox": "^1.2.0",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.3.3",
@@ -55,6 +57,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.6"
+    "typescript": "~3.1.6",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }
