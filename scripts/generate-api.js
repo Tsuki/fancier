@@ -167,11 +167,14 @@ function generator(cfg, site) {
 
   if (restful.site) {
     cfg.posts_links = posts.map(post => ({
-      link: decodeURIComponent(new URL(post.permalink).pathname),
+      link: decodeURIComponent(new URL(post.permalink).pathname)
+        .replace(/\/$/, '').replace(/^\//, ''),
       path: '/api/articles/' + post.slug + '.json'
     }));
     cfg.pages_links = site.pages.filter(page => !page.type).map(page => ({
-      link: decodeURIComponent(new URL(page.permalink).pathname).replace(/\/index\.html$/, '/').replace(/\.html$/, ''),
+      link: decodeURIComponent(new URL(page.permalink).pathname)
+        .replace(/\/index\.html$/, '/').replace(/\.html$/, '')
+        .replace(/\/$/, '').replace(/^\//, ''),
       path: '/api/pages/' + page.source.replace(/\.md$/, '.json')
     }));
     apiData.push({

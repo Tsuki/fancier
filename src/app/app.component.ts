@@ -2,8 +2,12 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ApiService} from './service/api.service';
 import {tap} from 'rxjs/operators';
-import {HexoConfig, ThemeConfig} from '~/model/site-config.class';
+import {HexoConfig, Theme_config} from '~/model/site-config.class';
 import {Title} from '@angular/platform-browser';
+import {Router, Routes} from "@angular/router";
+import {PageComponent} from "~/views/page/page.component";
+import {PostPageComponent} from "~/views/post-page/post-page.component";
+import {Route} from "@angular/router/src/config";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +16,7 @@ import {Title} from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   hexoConfig: HexoConfig;
-  theme: ThemeConfig;
+  theme: Theme_config;
   bodyClass: any = {container: true};
   lang = 'default';
 
@@ -21,6 +25,7 @@ export class AppComponent implements OnInit {
     private translate: TranslateService,
     private renderer: Renderer2,
     private titleService: Title,
+    private router: Router,
     private api: ApiService) {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('default');
@@ -40,6 +45,18 @@ export class AppComponent implements OnInit {
         this.translate.use(this.hexoConfig.language);
         this.lang = this.translate.currentLang;
         this.renderer.addClass(document.body, this.theme.scheme);
+        const posts_links = this.hexoConfig.posts_links.map(value => (<Route>{
+          path: value.link,
+          component: PageComponent,
+          data: {isIndex: false, json: value.path}
+        }));
+        const pages_links = this.hexoConfig.pages_links.map(value => (<Route>{
+          path: value.link,
+          component: PostPageComponent,
+          data: {json: value.path},
+        }));
+        this.router.config.unshift(...posts_links, ...pages_links);
+        console.log("this.router.config", this.router.config);
       })
     ).subscribe();
   }

@@ -24,6 +24,17 @@ export interface Marked {
   autolink: boolean;
 }
 
+export interface Category_generator {
+  per_page: number;
+}
+
+export interface Archive_generator {
+  per_page: number;
+  yearly: boolean;
+  monthly: boolean;
+  daily: boolean;
+}
+
 export interface Feed {
   type: string;
   limit: number;
@@ -34,10 +45,6 @@ export interface Feed {
   path: string;
 }
 
-export interface Category_generator {
-  per_page: number;
-}
-
 export interface Index_generator {
   per_page: number;
   order_by: string;
@@ -45,13 +52,6 @@ export interface Index_generator {
 
 export interface Sitemap {
   path: string;
-}
-
-export interface Archive_generator {
-  per_page: number;
-  yearly: boolean;
-  monthly: boolean;
-  daily: boolean;
 }
 
 export interface Tag_generator {
@@ -92,8 +92,7 @@ export interface Social {
 }
 
 export interface Link {
-  poiScript: string;
-  夢路: string;
+  [key: string]: string
 }
 
 export interface Auto_excerpt {
@@ -140,13 +139,6 @@ export interface Footer {
   theme: Theme;
 }
 
-export interface Menu {
-  home: string;
-  archives: string;
-  categories: string;
-  about: string;
-}
-
 export interface Menu_setting {
   icons: boolean;
   badges: boolean;
@@ -179,11 +171,6 @@ export interface Sidebar {
   b2t: boolean;
   scrollpercent: boolean;
   onmobile: boolean;
-}
-
-export interface Auto_excerpt {
-  enable: boolean;
-  length: number;
 }
 
 export interface Updated_at {
@@ -297,13 +284,6 @@ export interface Math {
   katex: Katex;
 }
 
-export interface Disqu {
-  enable: boolean;
-  shortname: string;
-  count: boolean;
-  lazyload: boolean;
-}
-
 export interface Changyan {
   enable: boolean;
   appid?: any;
@@ -348,13 +328,6 @@ export interface Option {
 export interface Postbottom {
   enable: boolean;
   options: Option;
-}
-
-export interface Option {
-  iconStyle: string;
-  boxForm: string;
-  position: string;
-  networks: string;
 }
 
 export interface Float {
@@ -471,11 +444,6 @@ export interface Note {
   light_bg_offset: number;
 }
 
-export interface Transition {
-  tabs: boolean;
-  labels: boolean;
-}
-
 export interface Tab {
   enable: boolean;
   transition: Transition;
@@ -539,26 +507,8 @@ export interface Vendor {
   valine?: any;
 }
 
-export interface Pjax {
-  enable: boolean;
-}
-
-export interface Aplayer {
-  enable: boolean;
-}
-
 export interface Social {
   gitHub: string;
-}
-
-export interface Link {
-  poiScript: string;
-  夢路: string;
-}
-
-export interface Custom_file_path {
-  header: string;
-  sidebar: string;
 }
 
 export interface Theme_config {
@@ -647,6 +597,16 @@ export interface Theme_config {
   custom_file_path: Custom_file_path;
 }
 
+export interface Posts_link {
+  link: string;
+  path: string;
+}
+
+export interface Pages_link {
+  link: string;
+  path: string;
+}
+
 export interface HexoConfig {
   title: string;
   subtitle?: any;
@@ -688,11 +648,11 @@ export interface HexoConfig {
   ignore: any[];
   disqus_shortname: string;
   marked: Marked;
-  feed: Feed;
   category_generator: Category_generator;
+  archive_generator: Archive_generator;
+  feed: Feed;
   index_generator: Index_generator;
   sitemap: Sitemap;
-  archive_generator: Archive_generator;
   tag_generator: Tag_generator;
   server: Server;
   scheme: string;
@@ -708,4 +668,6 @@ export interface HexoConfig {
   fancybox: boolean;
   custom_file_path: Custom_file_path;
   theme_config: Theme_config;
+  posts_links: Posts_link[];
+  pages_links: Pages_link[];
 }
