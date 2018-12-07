@@ -6,8 +6,7 @@ import {AppComponent} from './app.component';
 import {FaIconService, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HeaderComponent} from './components/header/header.component';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {fas} from '@fortawesome/free-solid-svg-icons'
-import {far} from '@fortawesome/free-regular-svg-icons'
+import {faArchive, faHome, faTh, faUser} from '@fortawesome/free-solid-svg-icons'
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
@@ -23,10 +22,12 @@ import {TagComponent} from './views/tag/tag.component';
 import {SiteNavComponent} from './components/header/site-nav/site-nav.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SafePipe} from './pipe/safe.pipe';
-import {PostHeaderComponent} from './views/page/post-header/post-header.component';
-import {PostComponent} from './views/page/post/post.component';
-import {PostBodyComponent} from './views/page/post-body/post-body.component';
+import {PostHeaderComponent} from './components/post-header/post-header.component';
+import {PostComponent} from './components/post/post.component';
+import {PostBodyComponent} from './components/post-body/post-body.component';
 import {LightboxModule} from "ngx-lightbox";
+import {faCalendarAlt, faCalendarCheck, faComment, faFolder} from "@fortawesome/free-regular-svg-icons";
+import {ArticleComponent} from './views/article/article.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -46,7 +47,11 @@ export function createTranslateLoader(http: HttpClient) {
     SafePipe,
     PostHeaderComponent,
     PostComponent,
-    PostBodyComponent
+    PostBodyComponent,
+    ArticleComponent
+  ],
+  entryComponents: [
+    ArticleComponent, PostPageComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +77,8 @@ export function createTranslateLoader(http: HttpClient) {
 })
 export class AppModule {
   constructor(private faIconService: FaIconService) {
-    library.add(fas, far);
+    library.add(faHome, faTh, faArchive, faUser,
+      faCalendarAlt, faCalendarCheck, faFolder, faComment);
     this.faIconService.defaultPrefix = 'fas';
   }
 }

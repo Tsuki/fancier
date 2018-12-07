@@ -9,6 +9,7 @@ import {PageComponent} from "~/views/page/page.component";
 import {PostPageComponent} from "~/views/post-page/post-page.component";
 import {Route} from "@angular/router/src/config";
 import {ObservableService} from "~/service/observable.service";
+import {ArticleComponent} from "~/views/article/article.component";
 
 @Component({
   selector: 'app-root',
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit {
         this.renderer.addClass(document.body, this.theme.scheme);
         const posts_links = this.hexoConfig.posts_links.map(value => (<Route>{
           path: value.link,
-          component: PageComponent,
+          component: ArticleComponent,
           data: {isIndex: false, json: value.path}
         }));
         const pages_links = this.hexoConfig.pages_links.map(value => (<Route>{
