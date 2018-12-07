@@ -4,6 +4,7 @@ import {ApiService} from '~/service/api.service';
 import {tap} from 'rxjs/operators';
 import {PostsList} from '~/model/posts-list.class';
 import {ActivatedRoute} from "@angular/router";
+import {ObservableService} from "~/service/observable.service";
 
 @Component({
   selector: 'app-page',
@@ -18,9 +19,11 @@ export class PageComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private osbService: ObservableService,
   ) {
-    this.isIndex = route.snapshot.data['isIndex'] == true
+    this.isIndex = route.snapshot.data['isIndex'] == true;
+    this.osbService.setPageClass(this.isIndex ? 'page-home' : 'page-post-detail');
   }
 
   ngOnInit() {

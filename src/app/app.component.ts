@@ -8,6 +8,7 @@ import {Router, Routes} from "@angular/router";
 import {PageComponent} from "~/views/page/page.component";
 import {PostPageComponent} from "~/views/post-page/post-page.component";
 import {Route} from "@angular/router/src/config";
+import {ObservableService} from "~/service/observable.service";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ import {Route} from "@angular/router/src/config";
 export class AppComponent implements OnInit {
   hexoConfig: HexoConfig;
   theme: Theme_config;
-  bodyClass: any = {container: true};
+  bodyClass = this.osbService.bodyClass;
   lang = 'default';
 
 
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit {
     private renderer: Renderer2,
     private titleService: Title,
     private router: Router,
+    private osbService: ObservableService,
     private api: ApiService) {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('default');
@@ -40,7 +42,7 @@ export class AppComponent implements OnInit {
       tap(() => this.titleService.setTitle(this.hexoConfig.title)),
       tap(() => {
         if (this.theme.sidebar.position) {
-          this.bodyClass['sidebar-position-' + this.theme.sidebar.position] = true;
+          this.osbService.addBodyClass('sidebar-position-' + this.theme.sidebar.position, true);
         }
         this.translate.use(this.hexoConfig.language);
         this.lang = this.translate.currentLang;
@@ -56,14 +58,7 @@ export class AppComponent implements OnInit {
           data: {json: value.path},
         }));
         this.router.config.unshift(...posts_links, ...pages_links);
-        console.log("this.router.config", this.router.config);
       })
     ).subscribe();
-  }
-
-  setPageClass(className: string) {
-    this.bodyClass['page-home'] = className === 'page-home';
-    this.bodyClass['page-post-detail'] = className === 'page-post-detail';
-    this.bodyClass['page-archive'] = className === 'page-archive';
   }
 }

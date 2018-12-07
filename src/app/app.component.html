@@ -1,4 +1,4 @@
-<div [ngClass]="bodyClass" [lang]="lang">
+<div [ngClass]="bodyClass|async" [lang]="lang">
   <div class="headband"></div>
   <app-header [hexoConfig]="hexoConfig" [theme]="theme" *ngIf="theme"></app-header>
 
