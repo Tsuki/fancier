@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HexoConfig, ThemeConfig} from '~/model/hexo-config.class';
+import {HexoConfig, Theme_config} from '~/model/site-config.class';
 import {ApiService} from '~/service/api.service';
 import {tap} from 'rxjs/operators';
 import {PostsList} from '~/model/posts-list.class';
@@ -12,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PageComponent implements OnInit {
   hexoConfig: HexoConfig;
-  theme: ThemeConfig;
+  theme: Theme_config;
   postsList: PostsList;
   isIndex = false;
 
@@ -20,7 +20,7 @@ export class PageComponent implements OnInit {
     private api: ApiService,
     private route: ActivatedRoute
   ) {
-    this.isIndex = route.snapshot.data['isIndex']
+    this.isIndex = route.snapshot.data['isIndex'] == true
   }
 
   ngOnInit() {

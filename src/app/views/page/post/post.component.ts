@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HexoConfig, ThemeConfig} from "~/model/hexo-config.class";
+import {HexoConfig, Theme_config} from "~/model/site-config.class";
 import {Post} from "~/model/posts-list.class";
 import * as moment from 'moment';
 import {TranslateService} from "@ngx-translate/core";
@@ -12,7 +12,7 @@ import {TranslateService} from "@ngx-translate/core";
 export class PostComponent implements OnInit {
 
   @Input() hexoConfig: HexoConfig;
-  @Input() theme: ThemeConfig;
+  @Input() theme: Theme_config;
   @Input() post: Post;
   @Input() isIndex: boolean;
   another_day: boolean;

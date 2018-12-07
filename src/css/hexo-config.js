@@ -1,7 +1,7 @@
 const YAML = require('yaml');
 const fs = require('fs');
 
-const file = fs.readFileSync('./config.yml', 'utf8');
+const file = fs.readFileSync('../../source/_data/next.yml', 'utf8');
 const _file = fs.readFileSync('./_config.yml', 'utf8');
 
 const _config = YAML.parse(_file);

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HexoConfig, ThemeConfig} from "~/model/hexo-config.class";
+import {HexoConfig, Theme_config} from "~/model/site-config.class";
 import {Post} from "~/model/posts-list.class";
 import {Lightbox} from "ngx-lightbox";
 import {IAlbum} from "ngx-lightbox/lightbox-event.service";
@@ -13,7 +13,7 @@ import * as striptags from 'striptags';
 export class PostBodyComponent implements OnInit {
 
   @Input() hexoConfig: HexoConfig;
-  @Input() theme: ThemeConfig;
+  @Input() theme: Theme_config;
   @Input() post: Post;
   @Input() isIndex: boolean;
   albums: IAlbum[] = [];

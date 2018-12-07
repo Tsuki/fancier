@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, HostBinding, Input, OnInit} from '@angular/core';
-import {HexoConfig, ThemeConfig} from "~/model/hexo-config.class";
+import {HexoConfig, Theme_config} from "~/model/site-config.class";
 import {animate, group, query, stagger, style, transition, trigger} from "@angular/animations";
 
 @Component({
@@ -28,7 +28,7 @@ import {animate, group, query, stagger, style, transition, trigger} from "@angul
 export class HeaderComponent implements OnInit, AfterViewInit {
 
   @Input() hexoConfig: HexoConfig;
-  @Input() theme: ThemeConfig;
+  @Input() theme: Theme_config;
   @HostBinding('@header') useMotion;
 
   constructor() {

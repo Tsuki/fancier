@@ -2,7 +2,7 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ApiService} from './service/api.service';
 import {tap} from 'rxjs/operators';
-import {HexoConfig, ThemeConfig} from '~/model/hexo-config.class';
+import {HexoConfig, ThemeConfig} from '~/model/site-config.class';
 import {Title} from '@angular/platform-browser';
 
 @Component({

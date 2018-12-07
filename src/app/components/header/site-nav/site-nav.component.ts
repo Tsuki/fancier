@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HexoConfig, ThemeConfig} from "~/model/hexo-config.class";
+import {HexoConfig, Theme_config} from "~/model/site-config.class";
 import {Utils} from "~/utils/utils";
 
 @Component({
@@ -13,7 +13,7 @@ export class SiteNavComponent implements OnInit {
   }
 
   @Input() hexoConfig: HexoConfig;
-  @Input() theme: ThemeConfig;
+  @Input() theme: Theme_config;
 
   ngOnInit() {
   }
