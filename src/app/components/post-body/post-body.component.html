@@ -12,7 +12,7 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="isIndex">
+<ng-container *ngIf="isIndex;else postContent">
   <ng-container [ngSwitch]="readMoreType">
 
     <ng-container *ngSwitchCase="1">
@@ -45,9 +45,15 @@
 
     <ng-container *ngSwitchCase="4">
       <a [routerLink]="post.path" *ngIf="post.type === 'picture'; else content">{{ post.content }}</a>
-      <ng-template #content><div [innerHtml]="post.content"></div></ng-template>
+      <ng-template #content>
+        <div [innerHtml]="post.content"></div>
+      </ng-template>
     </ng-container>
 
   </ng-container>
 
 </ng-container>
+
+<ng-template #postContent>
+  <div [innerHtml]="post.content"></div>
+</ng-template>
