@@ -12,9 +12,10 @@ export interface Category extends Basic {
 export interface Tag extends Basic {
 }
 
-export interface Data {
+export interface Post {
   _id: string;
   title: string;
+  description: string;
   slug: string;
   date: string;
   updated: string;
@@ -38,7 +39,7 @@ export interface PostsList {
   total: number;
   pageSize: number;
   pageCount: number;
-  data: Data[];
+  data: Post[];
 }
 
 export interface Page {
@@ -72,5 +73,5 @@ export interface SpecificPostsList {
   name: string;
   slug: string;
   count: number;
-  postlist: Data[];
+  postlist: Post[];
 }
