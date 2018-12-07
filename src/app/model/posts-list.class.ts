@@ -1,124 +1,76 @@
-export class PostsList {
-  data: Post[] = [];
-  pageCount = 0;
-  pageSize = 0;
-  total = 0;
-
-  constructor(raw?: any) {
-    if (raw) {
-      for (const key of Object.keys(this)) {
-        if (raw.hasOwnProperty(key)) {
-          if (key === 'data') {
-            Object.assign(this, {[key]: raw[key].map((one: any) => new Post(one))});
-          } else {
-            Object.assign(this, {[key]: raw[key]});
-          }
-        }
-      }
-    }
-  }
+export interface Basic {
+  name: string;
+  slug: string;
+  count: number;
+  path: string;
 }
 
-export class SpecificPostsList {
-  name = '';
-  postlist: Post[] = [];
-
-  constructor(raw?: any) {
-    if (raw) {
-      for (const key of Object.keys(this)) {
-        if (raw.hasOwnProperty(key)) {
-          if (key === 'postlist') {
-            Object.assign(this, {[key]: raw[key].map((one: any) => new Post(one))});
-          } else {
-            Object.assign(this, {[key]: raw[key]});
-          }
-
-        }
-      }
-    }
-  }
+export interface Category extends Basic {
 }
 
 
-export class Post {
-  _id = '';
-  title = '';
-  description = '';
-  slug = '';
-  date = '';
-  updated = '';
-  comments = false;
-  path = '';
-  excerpt: string | null = null;
-  keywords: any = null;
-  cover = '';
-  content: string | null = null;
-  text = '';
-  link = '';
-  type = '';
-  sticky = 0;
-  source = '';
-  permalink = '';
-  raw: string | null = null;
-  photos: string[] = [];
-  categories: Category[] = [];
-  tags: Tag[] = [];
-
-  constructor(raw?: any) {
-    if (raw) {
-      for (const key of Object.keys(this)) {
-        if (raw.hasOwnProperty(key)) {
-          if (key === 'categories') {
-            Object.assign(this, {[key]: raw[key].map((one: any) => new Category(one))});
-          } else if (key === 'tags') {
-            Object.assign(this, {[key]: raw[key].map((one: any) => new Tag(one))});
-          } else {
-            Object.assign(this, {[key]: raw[key]});
-          }
-
-        }
-      }
-    }
-  }
+export interface Tag extends Basic {
 }
 
-
-export class Category {
-  name = '';
-  slug = '';
-  path = '';
-  count = 0;
-  parent = '';
-
-  constructor(raw?: any) {
-    if (raw) {
-      for (const key of Object.keys(this)) {
-        if (raw.hasOwnProperty(key)) {
-          Object.assign(this, {[key]: raw[key]});
-        }
-      }
-
-      if (!(raw instanceof Category)) {
-        const splitted = this.slug.split('/');
-        this.parent = this.slug.split('/').filter((v, i, a) => i !== a.length - 1).join('/');
-      }
-    }
-  }
+export interface Data {
+  _id: string;
+  title: string;
+  slug: string;
+  date: string;
+  updated: string;
+  comments: boolean;
+  permalink: string;
+  path: string;
+  excerpt: string;
+  keywords?: any;
+  cover?: any;
+  content: string;
+  text: string;
+  link: string;
+  raw?: any;
+  photos: string[];
+  source: string;
+  categories: Category[];
+  tags: Tag[];
 }
 
-export class Tag {
-  name = '';
-  slug = '';
-  path = '';
-  count = 0;
+export interface PostsList {
+  total: number;
+  pageSize: number;
+  pageCount: number;
+  data: Data[];
+}
 
-  constructor(raw?: any) {
-    if (raw) {
-      for (const key of Object.keys(this)) {
-        if (raw.hasOwnProperty(key)) {
-          Object.assign(this, {[key]: raw[key]});
-        }
-      }
-    }
-  }
+export interface Page {
+  title: string;
+  date: string;
+  updated: string;
+  comments: boolean;
+  path: string;
+  covers?: any;
+  excerpt?: any;
+  content: string;
+}
+
+export interface Article {
+  title: string;
+  slug: string;
+  date: string;
+  updated: string;
+  comments: boolean;
+  path: string;
+  photos: string[];
+  link: string;
+  excerpt?: any;
+  covers?: any;
+  content: string;
+  categories: Category[];
+  tags: Tag[];
+}
+
+export interface SpecificPostsList {
+  name: string;
+  slug: string;
+  count: number;
+  postlist: Data[];
 }
