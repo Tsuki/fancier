@@ -51,12 +51,12 @@ export class AppComponent implements OnInit {
         const posts_links = this.hexoConfig.posts_links.map(value => (<Route>{
           path: value.link,
           component: ArticleComponent,
-          data: {isIndex: false, json: value.path}
+          data: {isIndex: false, json: value.path, slug: value.slug}
         }));
         const pages_links = this.hexoConfig.pages_links.map(value => (<Route>{
           path: value.link,
           component: PostPageComponent,
-          data: {json: value.path},
+          data: {json: value.path, source: value.source},
         }));
         this.router.config.unshift(...posts_links, ...pages_links);
         this.router.initialNavigation();

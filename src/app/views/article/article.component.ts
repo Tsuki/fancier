@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HexoConfig, Theme_config} from "~/model/site-config.class";
+import {Article, PostsList} from "~/model/posts-list.class";
+import {ApiService} from "~/service/api.service";
+import {ActivatedRoute} from "@angular/router";
+import {ObservableService} from "~/service/observable.service";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-article',
@@ -6,10 +12,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article.component.styl']
 })
 export class ArticleComponent implements OnInit {
+  hexoConfig: HexoConfig;
+  theme: Theme_config;
+  article: Article;
+  isIndex = false;
+  slug: string;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    private api: ApiService,
+    private route: ActivatedRoute,
+    private osbService: ObservableService,
+  ) {
+    this.osbService.setPageClass('page-post-detail');
+    this.slug = this.route.snapshot.data.slug;
   }
 
+  ngOnInit() {
+    this.api.fetchHexoConfig().pipe(
+      tap(value => this.hexoConfig = value),
+      tap(() => this.theme = this.hexoConfig.theme_config),
+    ).subscribe();
+    this.api.fetchPostBySlug(this.slug).pipe(
+      tap(value => this.article = value)
+    ).subscribe();
+  }
 }

@@ -56,17 +56,25 @@ export interface Page {
 }
 
 export interface Article {
+  _id: string;
   title: string;
+  type: string;
+  description: string;
   slug: string;
   date: string;
   updated: string;
   comments: boolean;
+  permalink: string;
   path: string;
-  photos: string[];
-  link: string;
-  excerpt?: any;
-  covers?: any;
+  excerpt: string;
+  keywords?: any;
+  cover?: any;
   content: string;
+  text: string;
+  link: string;
+  raw?: any;
+  photos: string[];
+  source: string;
   categories: Category[];
   tags: Tag[];
 }

@@ -169,13 +169,15 @@ function generator(cfg, site) {
     cfg.posts_links = posts.map(post => ({
       link: decodeURIComponent(new URL(post.permalink).pathname)
         .replace(/\/$/, '').replace(/^\//, ''),
-      path: '/api/articles/' + post.slug + '.json'
+      path: '/api/articles/' + post.slug + '.json',
+      slug: post.slug
     }));
     cfg.pages_links = site.pages.filter(page => !page.type).map(page => ({
       link: decodeURIComponent(new URL(page.permalink).pathname)
         .replace(/\/index\.html$/, '/').replace(/\.html$/, '')
         .replace(/\/$/, '').replace(/^\//, ''),
-      path: '/api/pages/' + page.source.replace(/\.md$/, '.json')
+      path: '/api/pages/' + page.source.replace(/\.md$/, '.json'),
+      source: page.source.replace(/\.md$/, '')
     }));
     apiData.push({
       path: 'api/site.json',

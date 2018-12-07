@@ -30,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: !environment.production, initialNavigation: 'disabled'})],
+  imports: [RouterModule.forRoot(routes, {/*enableTracing: !environment.production,*/ initialNavigation: 'disabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

@@ -600,11 +600,13 @@ export interface Theme_config {
 export interface Posts_link {
   link: string;
   path: string;
+  slug: string;
 }
 
 export interface Pages_link {
   link: string;
   path: string;
+  source: string;
 }
 
 export interface HexoConfig {
