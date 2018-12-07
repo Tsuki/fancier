@@ -5,6 +5,7 @@ import {ArchiveComponent} from './views/archive/archive.component';
 import {PageComponent} from './views/page/page.component';
 import {CategoryComponent} from './views/category/category.component';
 import {TagComponent} from './views/tag/tag.component';
+import {environment} from "../environments/environment";
 
 const routes: Routes = [
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {enableTracing: !environment.production, initialNavigation: 'disabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

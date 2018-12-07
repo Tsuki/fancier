@@ -58,6 +58,7 @@ export class AppComponent implements OnInit {
           data: {json: value.path},
         }));
         this.router.config.unshift(...posts_links, ...pages_links);
+        this.router.initialNavigation();
       })
     ).subscribe();
   }

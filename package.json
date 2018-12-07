@@ -26,7 +26,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
-    "add": "^2.0.6",
     "core-js": "^2.5.4",
     "moment": "^2.22.2",
     "ngx-lightbox": "^1.2.0",
@@ -35,7 +34,6 @@
     "striptags": "^3.1.1",
     "tslib": "^1.9.0",
     "yaml": "^1.0.3",
-    "yarn": "^1.12.3",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

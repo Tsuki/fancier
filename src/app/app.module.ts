@@ -71,8 +71,7 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(
-    private faIconService: FaIconService) {
+  constructor(private faIconService: FaIconService) {
     library.add(fas, far);
     this.faIconService.defaultPrefix = 'fas';
   }
