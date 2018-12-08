@@ -30,6 +30,7 @@ import {faCalendarAlt, faCalendarCheck, faComment, faFolder} from "@fortawesome/
 import {ArticleComponent} from './views/article/article.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {PaginatorComponent} from './components/paginator/paginator.component';
+import {DISQUS_SHORTNAME, DisqusModule} from "ngx-disqus";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -64,6 +65,7 @@ export function createTranslateLoader(http: HttpClient) {
     FontAwesomeModule,
     HttpClientModule,
     LightboxModule,
+    DisqusModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -74,6 +76,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     ApiService,
+    {provide: DISQUS_SHORTNAME, useValue: 'tsukiblog'},
     {provide: RequestCache, useClass: RequestCacheWithMap},
     {provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true}
   ],

@@ -17,6 +17,7 @@ export class ArticleComponent implements OnInit {
   article: Article;
   isIndex = false;
   slug: string;
+  pageId: string;
 
   constructor(
     private api: ApiService,
@@ -25,6 +26,10 @@ export class ArticleComponent implements OnInit {
   ) {
     this.osbService.setPageClass('page-post-detail');
     this.slug = this.route.snapshot.data.slug;
+    // this.pageId = '2018/10/15/在PostgresSQL啟用不區分大小寫欄位/';
+    this.pageId = this.route.snapshot.routeConfig.path + '/';
+    console.log(this.route.snapshot);
+    console.log(this.pageId);
   }
 
   ngOnInit() {

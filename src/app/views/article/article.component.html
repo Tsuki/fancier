@@ -2,3 +2,5 @@
   <div app-post [ngClass]="['post','post-type-'+(article.type||'normal')]" [post]="article" [hexoConfig]="hexoConfig"
        [theme]="theme" [isIndex]="false" *ngIf="article"></div>
 </section>
+
+<disqus [identifier]="pageId"></disqus>
