@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {FaIconService, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HeaderComponent} from './components/header/header.component';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faArchive, faHome, faTh, faUser} from '@fortawesome/free-solid-svg-icons'
+import {faAngleLeft, faAngleRight, faArchive, faHome, faTh, faUser} from '@fortawesome/free-solid-svg-icons'
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
@@ -28,6 +28,8 @@ import {PostBodyComponent} from './components/post-body/post-body.component';
 import {LightboxModule} from "ngx-lightbox";
 import {faCalendarAlt, faCalendarCheck, faComment, faFolder} from "@fortawesome/free-regular-svg-icons";
 import {ArticleComponent} from './views/article/article.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {PaginatorComponent} from './components/paginator/paginator.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,7 +50,9 @@ export function createTranslateLoader(http: HttpClient) {
     PostHeaderComponent,
     PostComponent,
     PostBodyComponent,
-    ArticleComponent
+    ArticleComponent,
+    FooterComponent,
+    PaginatorComponent
   ],
   entryComponents: [
     ArticleComponent, PostPageComponent
@@ -78,7 +82,8 @@ export function createTranslateLoader(http: HttpClient) {
 export class AppModule {
   constructor(private faIconService: FaIconService) {
     library.add(faHome, faTh, faArchive, faUser,
-      faCalendarAlt, faCalendarCheck, faFolder, faComment);
+      faCalendarAlt, faCalendarCheck, faFolder, faComment,
+      faAngleLeft, faAngleRight);
     this.faIconService.defaultPrefix = 'fas';
   }
 }

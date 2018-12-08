@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HexoConfig, Theme_config} from '~/model/site-config.class';
 import {ApiService} from '~/service/api.service';
-import {tap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {PostsList} from '~/model/posts-list.class';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, ParamMap} from "@angular/router";
 import {ObservableService} from "~/service/observable.service";
 
 @Component({
@@ -16,6 +16,8 @@ export class PageComponent implements OnInit {
   theme: Theme_config;
   postsList: PostsList;
   isIndex = false;
+  currentPage: number = 1;
+  mid_size = 1;
 
   constructor(
     private api: ApiService,
@@ -30,12 +32,22 @@ export class PageComponent implements OnInit {
     this.api.fetchHexoConfig().pipe(
       tap(value => this.hexoConfig = value),
       tap(() => this.theme = this.hexoConfig.theme_config),
-      tap(() => {
-      })
     ).subscribe();
-    this.api.fetchPostsList().pipe(
-      tap(value => this.postsList = value),
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+          const page = params.get('page');
+          this.currentPage = page ? Number(page) : 1;
+          this.initPageJson();
+          return [];
+        }
+      )
     ).subscribe();
+  }
+
+  initPageJson() {
+    this.api.fetchPostsList(this.currentPage).pipe(
+      tap(value => this.postsList = value)
+    ).subscribe()
   }
 
 }

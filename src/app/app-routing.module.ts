@@ -5,11 +5,13 @@ import {ArchiveComponent} from './views/archive/archive.component';
 import {PageComponent} from './views/page/page.component';
 import {CategoryComponent} from './views/category/category.component';
 import {TagComponent} from './views/tag/tag.component';
-import {environment} from "../environments/environment";
 
 const routes: Routes = [
   {
     path: '',
+    component: PageComponent, data: {isIndex: true}
+  }, {
+    path: 'page/:page',
     component: PageComponent, data: {isIndex: true}
   }, {
     path: 'archives',
@@ -30,7 +32,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {/*enableTracing: !environment.production,*/ initialNavigation: 'disabled'})],
+  imports: [RouterModule.forRoot(routes, {initialNavigation: 'disabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

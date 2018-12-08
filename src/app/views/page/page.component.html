@@ -4,3 +4,4 @@
          [theme]="theme" [isIndex]="isIndex"></div>
   </ng-container>
 </section>
+<app-paginator [current]="currentPage" [total]="postsList.pageCount" *ngIf="postsList" [mid_size]="mid_size"></app-paginator>
