@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --extraWebpackConfig webpack.extra.js",
+    "build": "ng build --prod --extraWebpackConfig webpack.extra.js --stats-json",
     "postbuild": "cp source/index.html layout",
     "bundle-report": "webpack-bundle-analyzer source/stats.json",
     "test": "ng test",

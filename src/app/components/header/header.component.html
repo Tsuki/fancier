@@ -1,5 +1,5 @@
-<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" *ngIf="theme" [@header]>
-  <div class="header-inner">
+<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" [@header]>
+  <div class="header-inner" *ngIf="theme">
     <div class="site-brand-wrapper" [class.custom-logo]="theme.custom_logo.enabled">
       <div class="site-meta">
 

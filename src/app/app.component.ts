@@ -41,12 +41,6 @@ export class AppComponent implements OnInit {
       tap(() => this.theme = this.hexoConfig.theme_config),
       tap(() => this.titleService.setTitle(this.hexoConfig.title)),
       tap(() => {
-        if (this.theme.sidebar.position) {
-          this.osbService.addBodyClass('sidebar-position-' + this.theme.sidebar.position, true);
-        }
-        this.translate.use(this.hexoConfig.language);
-        this.lang = this.translate.currentLang;
-        this.renderer.addClass(document.body, this.theme.scheme);
         const posts_links = this.hexoConfig.posts_links.map(value => (<Route>{
           path: value.link,
           component: ArticleComponent,
@@ -59,6 +53,18 @@ export class AppComponent implements OnInit {
         }));
         this.router.config.unshift(...posts_links, ...pages_links);
         this.router.initialNavigation();
+        if (this.theme.sidebar.position) {
+          this.osbService.addBodyClass('sidebar-position-' + this.theme.sidebar.position, true);
+        }
+        this.translate.use(this.hexoConfig.language);
+        this.lang = this.translate.currentLang;
+        this.renderer.addClass(document.body, this.theme.scheme);
+        const preloader = document.querySelector('.preloader');
+        preloader.addEventListener('transitionend', function () {
+          preloader.className = 'preloader-hidden';
+        });
+
+        preloader.className += ' preloader-hidden-add preloader-hidden-add-active';
       })
     ).subscribe();
   }
