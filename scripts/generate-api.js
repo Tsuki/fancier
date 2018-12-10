@@ -14,7 +14,7 @@ function filterHTMLTags(str) {
   return str ? str
     .replace(/<(?!img|br).*?>/g, '')
     .replace(/\r?\n|\r/g, '')
-    .replace(/<img(.*)>/g, ' [Figure] ') : null
+    .replace(/<img(.*)>/g, ' [Figure] ') : ""
 }
 
 function fetchCovers(str) {
@@ -169,7 +169,8 @@ function generator(cfg, site) {
     cfg.posts_links = posts.map(post => ({
       link: decodeURIComponent(new URL(post.permalink).pathname)
         .replace(/\/$/, '').replace(/^\//, ''),
-      path: '/api/articles/' + post.slug + '.json',
+      path: '/api/articles/' + decodeURIComponent(new URL(post.permalink).pathname)
+        .replace(/\/$/, '').replace(/^\//, '') + '.json',
       slug: post.slug
     }));
     cfg.pages_links = site.pages.filter(page => !page.type).map(page => ({
@@ -259,7 +260,8 @@ function generator(cfg, site) {
 
   if (restful.post) {
     apiData = apiData.concat(posts.map(function (post) {
-      const path = 'api/articles/' + post.slug + '.json';
+      const path = 'api/articles/' + decodeURIComponent(new URL(post.permalink).pathname)
+        .replace(/\/$/, '').replace(/^\//, '') + '.json';
       return {
         path: path,
         data: JSON.stringify({

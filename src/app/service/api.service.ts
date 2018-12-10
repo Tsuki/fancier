@@ -34,8 +34,8 @@ export class ApiService {
 
 
   // GET /api/articles/:Slug.json
-  fetchPostBySlug(slug: string): Observable<Article> {
-    return this.http.get<Article>(`/api/articles/${slug}.json`);
+  fetchPostBySlug(json: string): Observable<Article> {
+    return this.http.get<Article>(json);
   }
 
 

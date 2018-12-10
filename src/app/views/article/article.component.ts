@@ -16,7 +16,7 @@ export class ArticleComponent implements OnInit {
   theme: Theme_config;
   article: Article;
   isIndex = false;
-  slug: string;
+  json: string;
   pageId: string;
 
   constructor(
@@ -25,7 +25,7 @@ export class ArticleComponent implements OnInit {
     private osbService: ObservableService,
   ) {
     this.osbService.setPageClass('page-post-detail');
-    this.slug = this.route.snapshot.data.slug;
+    this.json = this.route.snapshot.data.json;
     this.pageId = this.route.snapshot.routeConfig.path + '/';
   }
 
@@ -34,7 +34,7 @@ export class ArticleComponent implements OnInit {
       tap(value => this.hexoConfig = value),
       tap(() => this.theme = this.hexoConfig.theme_config),
     ).subscribe();
-    this.api.fetchPostBySlug(this.slug).pipe(
+    this.api.fetchPostBySlug(this.json).pipe(
       tap(value => this.article = value)
     ).subscribe();
   }
