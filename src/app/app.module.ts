@@ -31,6 +31,7 @@ import {ArticleComponent} from './views/article/article.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {PaginatorComponent} from './components/paginator/paginator.component';
 import {DISQUS_SHORTNAME, DisqusModule} from "ngx-disqus";
+import {LazyLoadDirective} from './lazy-load.directive';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -53,7 +54,8 @@ export function createTranslateLoader(http: HttpClient) {
     PostBodyComponent,
     ArticleComponent,
     FooterComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    LazyLoadDirective
   ],
   entryComponents: [
     ArticleComponent, PostPageComponent
@@ -61,6 +63,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    // NoopAnimationsModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,

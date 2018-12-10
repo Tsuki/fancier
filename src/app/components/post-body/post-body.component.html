@@ -1,11 +1,12 @@
 <ng-container *ngIf="post.photos && post.photos.length">
   <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
     <ng-container *ngFor="let photo of post.photos; let i=index">
-      <div class="post-gallery-row">
+      <div class="post-gallery-row" (appLazyLoad)="imageLoad=$event">
         <a rel="gallery_{{post._id}}" itemscope [href]="photo" itemtype="http://schema.org/ImageObject"
            itemprop="url"> </a>
         <!--TODO multiple image fix-->
-        <img class="post-gallery-img" [src]="photo" (click)="open(i)" itemprop="contentUrl"/>
+        <img *ngIf=imageLoad class="post-gallery-img" [src]="photo" (click)="open(i)"
+             itemprop="contentUrl"/>
       </div>
     </ng-container>
 

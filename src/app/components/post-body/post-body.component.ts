@@ -18,6 +18,7 @@ export class PostBodyComponent implements OnInit {
   @Input() isIndex: boolean;
   albums: IAlbum[] = [];
   auto_excerpt = '';
+  imageLoad = false;
 
   constructor(
     private lightbox: Lightbox

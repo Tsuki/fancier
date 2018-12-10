@@ -16,6 +16,7 @@ export interface Post {
   _id: string;
   title: string;
   type: string;
+  sticky: number;
   description: string;
   slug: string;
   date: string;
