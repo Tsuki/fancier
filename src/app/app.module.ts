@@ -79,6 +79,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     ApiService,
+    // TODO move to app init
     {provide: DISQUS_SHORTNAME, useValue: 'tsukiblog'},
     {provide: RequestCache, useClass: RequestCacheWithMap},
     {provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true}
