@@ -137,6 +137,7 @@ export interface Footer {
   copyright?: any;
   powered: Powered;
   theme: Theme;
+  since: string;
 }
 
 export interface Menu_setting {
@@ -189,6 +190,8 @@ export interface Symbols_count_time {
   separated_meta: boolean;
   item_text_post: boolean;
   item_text_total: boolean;
+  total_symbols: number;
+  total_time: number;
   awl: number;
   wpm: number;
 }
@@ -670,6 +673,7 @@ export interface HexoConfig {
   fancybox: boolean;
   custom_file_path: Custom_file_path;
   theme_config: Theme_config;
+  version: string;
   posts_links: Posts_link[];
   pages_links: Pages_link[];
 }

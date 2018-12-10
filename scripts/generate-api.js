@@ -326,5 +326,5 @@ function generator(cfg, site) {
 hexo.extend.generator.register('json-content', function (site) {
   return generator(Object.assign({}, hexo.config, {
     theme_config: hexo.theme.config
-  }), site);
+  }, {version: hexo.version}), site);
 });

@@ -1,3 +1,52 @@
-<p>
-  footer works!
-</p>
+<footer id="footer" class="footer">
+  <div class="footer-inner">
+    <div class="copyright">
+      &copy;
+      <ng-container *ngIf="theme.footer.since && theme.footer.since != current"></ng-container>
+      <span itemprop="copyrightYear">{{ current }}</span>
+      <span class="with-love" id="animate"><fa-icon class="fa" [icon]="theme.footer.icon.name"></fa-icon> &nbsp;</span>
+      <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright||hexoConfig.author }}</span>
+
+      <ng-container *ngIf="theme.symbols_count_time.total_symbols">
+        <span class="post-meta-divider">|</span>
+        <span class="post-meta-item-icon"><fa-icon class="fa" [icon]="'chart-area'"></fa-icon> &nbsp;</span>
+        <ng-container *ngIf="theme.symbols_count_time.item_text_total">
+          <span class="post-meta-item-text">
+            {{'symbols_count_time.count_total'|translate}}{{'symbol.colon'|translate}}</span>
+        </ng-container>
+        <span title="{{'symbols_count_time.count_total'|translate}}"><!--{{ symbolsCountTotal(site) }}--></span>
+      </ng-container>
+
+      <ng-container *ngIf="theme.symbols_count_time.total_time">
+        <span class="post-meta-divider">|</span>
+        <span class="post-meta-item-icon"><fa-icon class="fa" [icon]="'coffee'"></fa-icon> &nbsp;</span>
+        <ng-container *ngIf="theme.symbols_count_time.item_text_total">
+          <span class="post-meta-item-text">{{'symbols_count_time.time_total'|translate}} &asymp;</span>
+        </ng-container>
+        <span title="{{'symbols_count_time.time_total'|translate}}">
+          <!-- //TODO {{ symbolsTimeTotal(site, theme.symbols_count_time.awl, theme.symbols_count_time.wpm, __('symbols_count_time.time_minutes')) }}-->
+        </span>
+      </ng-container>
+
+    </div>
+    <div class="powered-by">
+      {{('footer.powered'|translate).replace('%s','')}}
+      <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo&nbsp;</a>
+      <ng-container *ngIf="theme.footer.powered.version">
+        v{{hexoConfig.version}}
+      </ng-container>
+      <ng-container *ngIf="theme.footer.theme.enable">
+        <span *ngIf="theme.footer.powered.version" class="post-meta-divider">|</span>
+        <div class="theme-info">
+          {{'footer.theme'|translate}}
+          <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/Tsuki/fancier">
+            Fancier.{{ theme.scheme }}&nbsp;
+          </a>
+          <ng-container *ngIf="theme.footer.theme.version">
+            <!-- TODO v{{ theme.footer.theme.version }}-->
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</footer>

@@ -6,7 +6,16 @@ import {AppComponent} from './app.component';
 import {FaIconService, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HeaderComponent} from './components/header/header.component';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faAngleLeft, faAngleRight, faArchive, faHome, faTh, faUser} from '@fortawesome/free-solid-svg-icons'
+import {
+  faAngleLeft,
+  faAngleRight,
+  faArchive,
+  faChartArea,
+  faCoffee,
+  faHome,
+  faTh,
+  faUser
+} from '@fortawesome/free-solid-svg-icons'
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
@@ -90,7 +99,7 @@ export class AppModule {
   constructor(private faIconService: FaIconService) {
     library.add(faHome, faTh, faArchive, faUser,
       faCalendarAlt, faCalendarCheck, faFolder, faComment,
-      faAngleLeft, faAngleRight);
+      faAngleLeft, faAngleRight, faChartArea, faCoffee);
     this.faIconService.defaultPrefix = 'fas';
   }
 }
