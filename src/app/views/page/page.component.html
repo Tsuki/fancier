@@ -1,4 +1,4 @@
-<section id="posts" class="posts-expand" *ngIf="postsList && hexoConfig">
+<section id="posts" class="posts-expand" *ngIf="postsList && hexoConfig" [@post]>
   <ng-container *ngFor="let post of postsList.data">
     <div app-post [ngClass]="['post','post-type-'+(post.type||'normal')]" [post]="post" [hexoConfig]="hexoConfig"
          [theme]="theme" [isIndex]="isIndex"></div>
