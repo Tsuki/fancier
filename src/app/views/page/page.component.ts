@@ -6,7 +6,6 @@ import {PostsList} from '~/model/posts-list.class';
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {ObservableService} from "~/service/observable.service";
 import {postAnimation} from "~/utils/animation";
-import {AnimationService} from "~/service/animation.service";
 
 @Component({
   selector: 'app-page',
