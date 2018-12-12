@@ -31,7 +31,7 @@
     </div>
     <div class="powered-by">
       {{('footer.powered'|translate).replace('%s','')}}
-      <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo&nbsp;</a>
+      <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a>&nbsp;
       <ng-container *ngIf="theme.footer.powered.version">
         v{{hexoConfig.version}}
       </ng-container>
@@ -40,10 +40,9 @@
         <div class="theme-info">
           {{'footer.theme'|translate}}
           <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/Tsuki/fancier">
-            Fancier.{{ theme.scheme }}&nbsp;
-          </a>
+            Fancier.{{ theme.scheme }}</a>&nbsp;
           <ng-container *ngIf="theme.footer.theme.version">
-            <!-- TODO v{{ theme.footer.theme.version }}-->
+            v{{ version }}
           </ng-container>
         </div>
       </ng-container>

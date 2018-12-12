@@ -27,12 +27,12 @@ export class PaginatorComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log("on init");
-    this.update();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("changes", changes);
+    if (!changes.current.firstChange) {
+      window.scrollTo({top: 0})
+    }
     this.update();
   }
 
@@ -49,9 +49,9 @@ export class PaginatorComponent implements OnInit, OnChanges {
     this.rightMid = this.current + this.mid_size + this.end_size > this.total ?
       this.rightEnd - 1 : this.current + this.mid_size;
 
-    this.leftEndNumber=[];
-    this.leftMidNumber=[];
-    this.rightEndNumber=[];
+    this.leftEndNumber = [];
+    this.leftMidNumber = [];
+    this.rightEndNumber = [];
     for (let i = 1; i <= this.leftEnd; i++) {
       this.leftEndNumber.push(i)
     }

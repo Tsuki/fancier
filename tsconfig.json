@@ -21,6 +21,9 @@
     "paths": {
       "~/*": [
         "app/*"
+      ],
+      "~env/*": [
+        "environments/*"
       ]
     }
   }
