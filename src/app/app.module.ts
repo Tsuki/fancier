@@ -11,6 +11,8 @@ import {
   faAngleRight,
   faArchive,
   faChartArea,
+  faChevronLeft,
+  faChevronRight,
   faCoffee,
   faHome,
   faTh,
@@ -42,6 +44,9 @@ import {PaginatorComponent} from './components/paginator/paginator.component';
 import {DISQUS_SHORTNAME, DisqusModule} from "ngx-disqus";
 import {LazyLoadDirective} from './lazy-load.directive';
 import {SafeHtmlPipe} from './pipe/safe-html.pipe';
+import {PostFooterComponent} from './components/post-footer/post-footer.component';
+import {PostRelatedComponent} from './components/post-related/post-related.component';
+import {PostCopyrightComponent} from './components/post-copyright/post-copyright.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -66,7 +71,10 @@ export function createTranslateLoader(http: HttpClient) {
     FooterComponent,
     PaginatorComponent,
     LazyLoadDirective,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    PostFooterComponent,
+    PostRelatedComponent,
+    PostCopyrightComponent
   ],
   entryComponents: [
     ArticleComponent, PostPageComponent
@@ -101,7 +109,8 @@ export class AppModule {
   constructor(private faIconService: FaIconService) {
     library.add(faHome, faTh, faArchive, faUser,
       faCalendarAlt, faCalendarCheck, faFolder, faComment,
-      faAngleLeft, faAngleRight, faChartArea, faCoffee);
+      faAngleLeft, faAngleRight, faChartArea, faCoffee,
+      faChevronLeft, faChevronRight);
     this.faIconService.defaultPrefix = 'fas';
   }
 }

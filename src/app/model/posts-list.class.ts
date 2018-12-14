@@ -35,6 +35,8 @@ export interface Post {
   source: string;
   categories: Category[];
   tags: Tag[];
+  next: { title: string, link: string };
+  prev: { title: string, link: string };
 }
 
 export interface PostsList {

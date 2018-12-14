@@ -262,6 +262,8 @@ function generator(cfg, site) {
     apiData = apiData.concat(posts.map(function (post) {
       const path = 'api/articles/' + decodeURIComponent(new URL(post.permalink).pathname)
         .replace(/\/$/, '').replace(/^\//, '') + '.json';
+      const prev = post.prev ? post.prev : null;
+      const next = post.next ? post.next : null;
       return {
         path: path,
         data: JSON.stringify({
@@ -277,6 +279,18 @@ function generator(cfg, site) {
           covers: fetchCovers(post.content),
           keywords: cfg.keyword,
           content: post.content,
+          prev: prev ? {
+            title: prev.title,
+            link: '/' + decodeURIComponent(new URL(prev.permalink).pathname)
+              .replace(/\/index\.html$/, '/').replace(/\.html$/, '')
+              .replace(/\/$/, '').replace(/^\//, ''),
+          } : null,
+          next: next ? {
+            title: next.title,
+            link: '/' + decodeURIComponent(new URL(next.permalink).pathname)
+              .replace(/\/index\.html$/, '/').replace(/\.html$/, '')
+              .replace(/\/$/, '').replace(/^\//, ''),
+          } : null,
           categories: post.categories.map(function (cat) {
             return {
               name: cat.name,
