@@ -26,7 +26,7 @@
     </ng-container>
 
     <ng-container *ngSwitchCase="2">
-      <div [innerHtml]="post.excerpt"></div>
+      <div [innerHtml]="post.excerpt|safeHtml"></div>
       <div class="post-button text-center">
         <a class="btn" [routerLink]="post.permalink" rel="contents">
           {{'post.read_more'|translate}} &raquo;
@@ -47,7 +47,7 @@
     <ng-container *ngSwitchCase="4">
       <a [routerLink]="post.path" *ngIf="post.type === 'picture'; else content">{{ post.content }}</a>
       <ng-template #content>
-        <div [innerHtml]="post.content"></div>
+        <div [innerHtml]="post.content|safeHtml"></div>
       </ng-template>
     </ng-container>
 
@@ -56,5 +56,6 @@
 </ng-container>
 
 <ng-template #postContent>
-  <div [innerHtml]="post.content"></div>
+  <div [innerHtml]="post.content|safeHtml"></div>
+  <!--{{post.content}}-->
 </ng-template>
