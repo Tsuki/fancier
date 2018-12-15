@@ -32,7 +32,6 @@ export class PictureComponent implements OnInit, AfterViewInit {
     const ext = this.src.split('.').pop();
     this.srcset_ori = this.src;
     this.type_ori = this.mime[ext];
-    console.log(this.src);
     this.srcset_webp = this.src.substr(0, pos) + ".webp";
   }
 
