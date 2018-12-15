@@ -35,7 +35,10 @@ export class ArticleComponent implements OnInit {
       tap(() => this.theme = this.hexoConfig.theme_config),
     ).subscribe();
     this.api.fetchPostBySlug(this.json).pipe(
-      tap(value => this.article = value)
+      tap(value => this.article = value),
+      tap(() => {
+        this.article.content = this.article.content.replace('img', 'picture')
+      })
     ).subscribe();
   }
 }

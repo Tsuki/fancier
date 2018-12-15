@@ -47,6 +47,7 @@ import {SafeHtmlPipe} from './pipe/safe-html.pipe';
 import {PostFooterComponent} from './components/post-footer/post-footer.component';
 import {PostRelatedComponent} from './components/post-related/post-related.component';
 import {PostCopyrightComponent} from './components/post-copyright/post-copyright.component';
+import {PictureComponent} from './components/picture/picture.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -74,7 +75,8 @@ export function createTranslateLoader(http: HttpClient) {
     SafeHtmlPipe,
     PostFooterComponent,
     PostRelatedComponent,
-    PostCopyrightComponent
+    PostCopyrightComponent,
+    PictureComponent
   ],
   entryComponents: [
     ArticleComponent, PostPageComponent
