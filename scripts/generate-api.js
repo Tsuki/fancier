@@ -90,7 +90,7 @@ function generator(cfg, site) {
         path: posts_props('path', 'api/articles/' + post.slug + '.json'),
         excerpt: posts_props('excerpt', post.excerpt),
         keywords: posts_props('keywords', cfg.keywords),
-        cover: posts_props('cover', post.cover || fetchCover(post.content)),
+        covers: posts_props('cover', post.covers || fetchCover(post.content)),
         content: posts_props('content', post.excerpt ? null : post.content),
         text: posts_props('text', filterHTMLTags(post.content).substring(0, 140)),
         link: posts_props('link', post.link),
@@ -314,10 +314,8 @@ function generator(cfg, site) {
 
   if (restful.pages) {
     apiData = apiData.concat(site.pages.data.map(function (page) {
-      const safe_title = page.title.replace(/[^a-z0-9]/gi, '-').toLowerCase();
       const sourceMappedPath = page.source.replace(/\.md$/, '.json');
       const path = 'api/pages/' + sourceMappedPath;
-      const covers = fetchCovers(page.content);
       return {
         path: path,
         data: JSON.stringify({
@@ -326,6 +324,7 @@ function generator(cfg, site) {
           updated: page.updated,
           comments: page.comments,
           path: path,
+          photos: page.photos,
           covers: fetchCovers(page.content),
           excerpt: filterHTMLTags(page.excerpt),
           content: page.content

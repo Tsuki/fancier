@@ -26,7 +26,7 @@ export interface Post {
   path: string;
   excerpt: string;
   keywords?: any;
-  cover?: any;
+  covers?: string[];
   content: string;
   text: string;
   link: string;
