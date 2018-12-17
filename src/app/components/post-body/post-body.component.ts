@@ -46,6 +46,8 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    if (this.isIndex && this.readMoreType != 4)
+      return;
     const tmpComponent = compileToComponent(this.post.content);
     const tmpModule = compileToModule([tmpComponent], [AppModule]);
     this.compiler.compileModuleAndAllComponentsAsync(tmpModule).then(
@@ -59,6 +61,7 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
   }
 
   get readMoreType() {
+    // return 4;
     if (this.post.description && this.theme.excerpt_description) {
       return 1
     } else if (this.post.excerpt) {
