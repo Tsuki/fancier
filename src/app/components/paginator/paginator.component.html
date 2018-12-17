@@ -1,14 +1,14 @@
 <nav class="pagination">
 
   <ng-container *ngIf="prevNext && current != 1">
-    <a class="extend prev" rel="prev" [routerLink]="'/page/'+(current-1)">
+    <a class="extend prev" rel="prev" [routerLink]="'/page/'+(current-1)" aria-label="prev">
       <fa-icon class="fa" [icon]="'angle-left'"></fa-icon>
       <i class="fa fa-angle-left" [attr.label]="'accessibility.prev_page'|translate"></i>
     </a>
   </ng-container>
 
   <ng-container *ngFor="let page_number of leftEndNumber">
-    <a class="page-number" [routerLink]="page_number==1?'/':'/page/'+page_number"
+    <a class="page-number" [routerLink]="page_number==1?'/':'/page/'+page_number" aria-label="page"
        routerLinkActive="current" [routerLinkActiveOptions]="{exact:true}">{{page_number}}</a>
   </ng-container>
 
@@ -18,7 +18,7 @@
   </ng-container>
 
   <ng-container *ngFor="let page_number of leftMidNumber">
-    <a class="page-number" [routerLink]="page_number==1?'/':'/page/'+page_number"
+    <a class="page-number" [routerLink]="page_number==1?'/':'/page/'+page_number"  aria-label="page"
        routerLinkActive="current" [routerLinkActiveOptions]="{exact:true}">{{page_number}}</a>
   </ng-container>
 
@@ -28,13 +28,13 @@
   </ng-container>
 
   <ng-container *ngFor="let page_number of rightEndNumber">
-    <a class="page-number" [routerLink]="page_number==1?'/':'/page/'+page_number"
+    <a class="page-number" [routerLink]="page_number==1?'/':'/page/'+page_number" aria-label="page"
        routerLinkActive="current" [routerLinkActiveOptions]="{exact:true}">{{page_number}}</a>
   </ng-container>
 
 
   <ng-container *ngIf="prevNext && current != total">
-    <a class="extend next" rel="next" [routerLink]="'/page/'+(current+1)">
+    <a class="extend next" rel="next" [routerLink]="'/page/'+(current+1)"  aria-label="next">
       <fa-icon class="fa" [icon]="'angle-right'"></fa-icon>
       <i class="fa fa-angle-right" [attr.label]="'accessibility.next_page'|translate"></i>
     </a>

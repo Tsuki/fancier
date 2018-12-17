@@ -30,7 +30,7 @@
         <span class="post-meta-item-text" *ngIf="theme.post_meta.item_text">{{'post.in'|translate}}&nbsp;</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing"
               *ngFor="let cat of post.categories; last as isLast">
-          <a [routerLink]="cat.path" itemprop="url" rel="index">
+          <a [routerLink]="cat.path" itemprop="url" rel="index" aria-label="categories">
             <span itemprop="name">{{ cat.name }}</span>
           </a>
           <ng-container *ngIf="!isLast">{{'symbol.comma'|translate}}</ng-container>
@@ -70,7 +70,7 @@
   <ng-container *ngIf="isIndex">
     <span *ngIf="post.sticky>0" class="post-sticky-flag" [title]="'post.sticky'|translate">
       <fa-icon class="fa" icon="thumb-tack"></fa-icon>&nbsp;</span>
-    <a class="post-title-link" [routerLink]="post.permalink" itemprop="url">
+    <a class="post-title-link" [routerLink]="post.permalink" itemprop="url" aria-label="post">
       {{ post.title || ('post.untitled'|translate) }}
     </a>
   </ng-container>

@@ -4,7 +4,8 @@
       <li class="menu-item menu-item-{{ menu.key }}"
           routerLinkActive="menu-item-active" [routerLinkActiveOptions]="{exact:true}">
 
-        <a rel="section" [routerLink]="menu.value.split('||')[0].trim()">
+        <a rel="section" [routerLink]="menu.value.split('||')[0].trim()"
+           [attr.aria-label]="menu.value.split('||')[0].trim()">
           <fa-icon class="menu-item-icon fa" [icon]="menu.value.split('||')[1].trim()"></fa-icon>
           &nbsp;<br/>{{'menu.' + menu.key|translate}}
         </a>

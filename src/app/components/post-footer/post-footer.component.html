@@ -1,12 +1,12 @@
 <footer class="post-footer">
 
   <div class="post-tags" *ngIf="post.tags && post.tags.length && !isIndex">
-    <a [routerLink]="tag.path" rel="tag" *ngFor="let tag of post.tags"># {{ tag.name }}</a>
+    <a [routerLink]="tag.path" rel="tag" aria-label="tag" *ngFor="let tag of post.tags"># {{ tag.name }}</a>
   </div>
 
   <div class="post-nav" *ngIf="!isIndex && (post.prev || post.next)">
     <div class="post-nav-next post-nav-item">
-      <a [routerLink]="post.next.link" rel="next" [title]="post.next.title" *ngIf="post.next">
+      <a [routerLink]="post.next.link" rel="next" aria-label="next" [title]="post.next.title" *ngIf="post.next">
         <fa-icon class="fa" [icon]="'chevron-left'"></fa-icon>
         {{ post.next.title }} &nbsp;
       </a>
@@ -15,7 +15,7 @@
     <span class="post-nav-divider"></span>
 
     <div class="post-nav-prev post-nav-item">
-      <a [routerLink]="post.prev.link" rel="prev" [title]="post.prev.title" *ngIf="post.prev">
+      <a [routerLink]="post.prev.link" rel="prev" aria-label="prev" [title]="post.prev.title" *ngIf="post.prev">
         {{ post.prev.title }} &nbsp;
         <fa-icon class="fa" [icon]="'chevron-right'"></fa-icon>
       </a>

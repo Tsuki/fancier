@@ -18,7 +18,7 @@
     <ng-container *ngSwitchCase="1">
       {{post.description}}
       <div class="post-button text-center">
-        <a class="btn" [routerLink]="post.permalink">
+        <a class="btn" [routerLink]="post.permalink" aria-label="contents">
           {{'post.read_more'|translate}} &raquo;
         </a>
       </div>
@@ -27,7 +27,7 @@
     <ng-container *ngSwitchCase="2">
       <div [innerHtml]="post.excerpt|safeHtml"></div>
       <div class="post-button text-center">
-        <a class="btn" [routerLink]="post.permalink" rel="contents">
+        <a class="btn" [routerLink]="post.permalink" rel="contents" aria-label="contents">
           {{'post.read_more'|translate}} &raquo;
         </a>
       </div>
@@ -37,14 +37,15 @@
       <!--<div [innerHtml]="auto_excerpt"></div>-->
       {{auto_excerpt}}
       <div class="post-button text-center">
-        <a class="btn" [routerLink]="post.permalink" rel="contents">
+        <a class="btn" [routerLink]="post.permalink" rel="contents" aria-label="contents">
           {{'post.read_more'|translate}} &raquo;
         </a>
       </div>
     </ng-container>
 
     <ng-container *ngSwitchCase="4">
-      <a [routerLink]="post.path" *ngIf="post.type === 'picture'; else container">{{ post.content }}</a>
+      <a [routerLink]="post.path" *ngIf="post.type === 'picture'; else container"
+         aria-label="contents">{{ post.content }}</a>
       <!--<ng-template #content>-->
       <!--<div [innerHtml]="post.content|safeHtml"></div>-->
       <!--</ng-template>-->
