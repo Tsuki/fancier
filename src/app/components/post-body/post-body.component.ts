@@ -14,6 +14,7 @@ import {HexoConfig, Theme_config} from "app/model/site-config.class";
 import {Post} from "app/model/posts-list.class";
 import * as striptags from 'striptags';
 import {compileToComponent, compileToModule} from "~/utils/utils";
+import {AppModule} from "~/app.module";
 
 @Component({
   selector: 'app-post-body',
@@ -46,7 +47,7 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     const tmpComponent = compileToComponent(this.post.content);
-    const tmpModule = compileToModule([tmpComponent], []);
+    const tmpModule = compileToModule([tmpComponent], [AppModule]);
     this.compiler.compileModuleAndAllComponentsAsync(tmpModule).then(
       (factories) => {
         const factory = factories.componentFactories.find(f => f.componentType === tmpComponent);

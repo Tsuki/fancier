@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {ComponentRef, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -52,30 +52,34 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+const COMPONENT = [
+  AppComponent,
+  HeaderComponent,
+  PostPageComponent,
+  ArchiveComponent,
+  NotFoundComponent,
+  CategoryComponent,
+  PageComponent,
+  TagComponent,
+  SiteNavComponent,
+  SafePipe,
+  PostHeaderComponent,
+  PostComponent,
+  PostBodyComponent,
+  ArticleComponent,
+  FooterComponent,
+  PaginatorComponent,
+  LazyLoadDirective,
+  SafeHtmlPipe,
+  PostFooterComponent,
+  PostRelatedComponent,
+  PostCopyrightComponent,
+  PictureComponent
+];
+
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    PostPageComponent,
-    ArchiveComponent,
-    NotFoundComponent,
-    CategoryComponent,
-    PageComponent,
-    TagComponent,
-    SiteNavComponent,
-    SafePipe,
-    PostHeaderComponent,
-    PostComponent,
-    PostBodyComponent,
-    ArticleComponent,
-    FooterComponent,
-    PaginatorComponent,
-    LazyLoadDirective,
-    SafeHtmlPipe,
-    PostFooterComponent,
-    PostRelatedComponent,
-    PostCopyrightComponent,
-    PictureComponent
+    ...COMPONENT
   ],
   entryComponents: [
     ArticleComponent, PostPageComponent
@@ -102,6 +106,9 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: DISQUS_SHORTNAME, useValue: 'tsukiblog'},
     {provide: RequestCache, useClass: RequestCacheWithMap},
     {provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true}
+  ],
+  exports: [
+    ...COMPONENT
   ],
   bootstrap: [AppComponent]
 })
