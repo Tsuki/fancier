@@ -37,7 +37,7 @@ export class ArticleComponent implements OnInit {
     this.api.fetchPostBySlug(this.json).pipe(
       tap(value => this.article = value),
       tap(() => {
-        this.article.content = this.article.content.replace('img', 'picture')
+        this.article.content = this.article.content.replace(/img/g, 'picture')
       })
     ).subscribe();
   }

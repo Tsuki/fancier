@@ -4985,11 +4985,6 @@ ngx-disqus@^2.4.3:
   dependencies:
     tslib "^1.9.0"
 
-ngx-lightbox@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/ngx-lightbox/-/ngx-lightbox-1.2.0.tgz#009dd68f79f9f1a7ea42fb8aaea88ee8ff787b34"
-  integrity sha512-ewt1nByfwuC+1gmVcXnBakPttQWykg9tAm0r8INVnp+8nEEuOk5Fz6kQWn8rSHxeo20/dyjZlWpfd3FM3XbtwA==
-
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

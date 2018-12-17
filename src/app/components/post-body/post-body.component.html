@@ -1,6 +1,6 @@
 <ng-container *ngIf="post.photos && post.photos.length">
   <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-    <ng-container *ngFor="let photo of post.photos; let i=index">
+    <ng-container *ngFor="let photo of post.photos;">
       <!--<div class="post-gallery-row" (appLazyLoad)="imageLoad=$event">-->
       <!--<a rel="gallery_{{post._id}}" itemscope [href]="photo" itemtype="http://schema.org/ImageObject"-->
       <!--itemprop="url"> </a>-->
@@ -44,17 +44,17 @@
     </ng-container>
 
     <ng-container *ngSwitchCase="4">
-      <a [routerLink]="post.path" *ngIf="post.type === 'picture'; else content">{{ post.content }}</a>
-      <ng-template #content>
-        <div [innerHtml]="post.content|safeHtml"></div>
-      </ng-template>
+      <a [routerLink]="post.path" *ngIf="post.type === 'picture'; else container">{{ post.content }}</a>
+      <!--<ng-template #content>-->
+        <!--<div [innerHtml]="post.content|safeHtml"></div>-->
+      <!--</ng-template>-->
     </ng-container>
 
   </ng-container>
 
 </ng-container>
 
-<ng-template #postContent>
+<ng-template #container>
   <div [innerHtml]="post.content|safeHtml"></div>
   <!--{{post.content}}-->
 </ng-template>

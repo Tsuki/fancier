@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {ComponentRef, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -36,7 +36,6 @@ import {SafePipe} from './pipe/safe.pipe';
 import {PostHeaderComponent} from './components/post-header/post-header.component';
 import {PostComponent} from './components/post/post.component';
 import {PostBodyComponent} from './components/post-body/post-body.component';
-import {LightboxModule} from "ngx-lightbox";
 import {faCalendarAlt, faCalendarCheck, faComment, faFolder} from "@fortawesome/free-regular-svg-icons";
 import {ArticleComponent} from './views/article/article.component';
 import {FooterComponent} from './components/footer/footer.component';
@@ -88,7 +87,6 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    LightboxModule,
     DisqusModule,
     TranslateModule.forRoot({
       loader: {
