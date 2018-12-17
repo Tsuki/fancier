@@ -17,21 +17,6 @@ function filterHTMLTags(str) {
     .replace(/<img(.*)>/g, ' [Figure] ') : ""
 }
 
-function fetchCovers(str) {
-  let temp,
-    imgURLs = [],
-    rex = /<img[^>]+src="?([^"\s]+)"(.*)>/g;
-  while (temp = rex.exec(str)) {
-    imgURLs.push(temp[1]);
-  }
-  return imgURLs.length > 0 ? imgURLs : null;
-}
-
-function fetchCover(str) {
-  const covers = fetchCovers(str);
-  return covers ? covers[0] : null;
-}
-
 function generator(cfg, site) {
 
   let restful = {
@@ -90,7 +75,6 @@ function generator(cfg, site) {
         path: posts_props('path', 'api/articles/' + post.slug + '.json'),
         excerpt: posts_props('excerpt', post.excerpt),
         keywords: posts_props('keywords', cfg.keywords),
-        covers: posts_props('cover', post.covers || fetchCover(post.content)),
         content: posts_props('content', post.excerpt ? null : post.content),
         text: posts_props('text', filterHTMLTags(post.content).substring(0, 140)),
         link: posts_props('link', post.link),
@@ -276,7 +260,6 @@ function generator(cfg, site) {
           photos: post.photos,
           link: post.link,
           excerpt: filterHTMLTags(post.excerpt),
-          covers: fetchCovers(post.content),
           keywords: cfg.keyword,
           content: post.content,
           prev: prev ? {
@@ -325,7 +308,6 @@ function generator(cfg, site) {
           comments: page.comments,
           path: path,
           photos: page.photos,
-          covers: fetchCovers(page.content),
           excerpt: filterHTMLTags(page.excerpt),
           content: page.content
         })

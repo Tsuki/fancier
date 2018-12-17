@@ -26,7 +26,6 @@ export interface Post {
   path: string;
   excerpt: string;
   keywords?: any;
-  covers?: string[];
   content: string;
   text: string;
   link: string;
@@ -53,7 +52,6 @@ export interface Page {
   updated: string;
   comments: boolean;
   path: string;
-  covers?: any;
   excerpt?: any;
   content: string;
 }
@@ -71,7 +69,6 @@ export interface Article {
   path: string;
   excerpt: string;
   keywords?: any;
-  cover?: any;
   content: string;
   text: string;
   link: string;

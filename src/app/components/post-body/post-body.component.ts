@@ -40,9 +40,6 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    if (this.post.covers && !this.post.photos) {
-      this.post.photos = this.post.covers
-    }
   }
 
   ngAfterViewInit(): void {

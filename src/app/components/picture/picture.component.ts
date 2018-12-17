@@ -28,6 +28,9 @@ export class PictureComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    const path = this.src.split('||');
+    this.src = path[0];
+    this.alt = path[1] || this.alt || 'placeholder';
     const pos = this.src.lastIndexOf(".");
     const ext = this.src.split('.').pop();
     this.srcset_ori = this.src;
