@@ -33,9 +33,12 @@ export class PictureComponent implements OnInit, AfterViewInit {
     this.alt = path[1] || this.alt || 'placeholder';
     const pos = this.src.lastIndexOf(".");
     const ext = this.src.split('.').pop();
-    this.srcset_ori = this.src;
     this.type_ori = this.mime[ext];
-    this.srcset_webp = this.src.substr(0, pos) + ".webp";
+    const src_path = this.src.substr(0, pos);
+
+
+    this.srcset_ori = [`${src_path}-small.${ext} 460w`, `${src_path}-large.${ext} 720w`, `${src_path}.${ext}`].join(', ');
+    this.srcset_webp = [`${src_path}-small.webp 460w`, `${src_path}-large.webp 720w`, `${src_path}.webp`].join(', ');
   }
 
   ngAfterViewInit(): void {
