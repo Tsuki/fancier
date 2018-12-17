@@ -1,3 +1,8 @@
-<p>
-  post-page works!
-</p>
+<section id="posts" class="posts-expand" *ngIf="article && hexoConfig">
+  <div app-post [ngClass]="['post','post-type-'+(article.type||'normal')]" [post]="article" [hexoConfig]="hexoConfig"
+       [theme]="theme" [isIndex]="false" *ngIf="article"></div>
+</section>
+
+<div class="comments" id="comments">
+  <disqus [identifier]="pageId"></disqus>
+</div>

@@ -1,36 +1,60 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {
+  AfterViewInit,
+  Compiler,
+  Component,
+  ComponentFactoryResolver,
+  Injector,
+  Input,
+  NgModuleRef,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import {HexoConfig, Theme_config} from "app/model/site-config.class";
 import {Post} from "app/model/posts-list.class";
-import {Lightbox} from "ngx-lightbox";
-import {IAlbum} from "ngx-lightbox/lightbox-event.service";
 import * as striptags from 'striptags';
+import {compileToComponent, compileToModule} from "~/utils/utils";
 
 @Component({
   selector: 'app-post-body',
   templateUrl: './post-body.component.html',
   styleUrls: ['./post-body.component.styl']
 })
-export class PostBodyComponent implements OnInit {
+export class PostBodyComponent implements OnInit, AfterViewInit {
 
   @Input() hexoConfig: HexoConfig;
   @Input() theme: Theme_config;
   @Input() post: Post;
   @Input() isIndex: boolean;
-  albums: IAlbum[] = [];
   auto_excerpt = '';
-  imageLoad = false;
+
+  @ViewChild('container', {read: ViewContainerRef})
+  container: ViewContainerRef;
+
 
   constructor(
-    private lightbox: Lightbox
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private compiler: Compiler, private injector: Injector, private ngModuleRef: NgModuleRef<any>,
   ) {
   }
 
   ngOnInit() {
-    this.albums = this.post.photos.map(value => <IAlbum>{src: value})
+    if (this.post.covers && !this.post.photos) {
+      this.post.photos = this.post.covers
+    }
   }
 
-  open(index: number): void {
-    this.lightbox.open(this.albums, index);
+  ngAfterViewInit(): void {
+    const tmpComponent = compileToComponent(this.post.content);
+    const tmpModule = compileToModule([tmpComponent], []);
+    this.compiler.compileModuleAndAllComponentsAsync(tmpModule).then(
+      (factories) => {
+        const factory = factories.componentFactories.find(f => f.componentType === tmpComponent);
+        const cmpRef = factory.create(this.injector, [], null, this.ngModuleRef);
+        cmpRef.instance.name = 'dynamic';
+        this.container.insert(cmpRef.hostView);
+      }
+    )
   }
 
   get readMoreType() {
@@ -52,4 +76,5 @@ export class PostBodyComponent implements OnInit {
       return 4
     }
   }
+
 }

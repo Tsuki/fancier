@@ -46,7 +46,7 @@
     <ng-container *ngSwitchCase="4">
       <a [routerLink]="post.path" *ngIf="post.type === 'picture'; else container">{{ post.content }}</a>
       <!--<ng-template #content>-->
-        <!--<div [innerHtml]="post.content|safeHtml"></div>-->
+      <!--<div [innerHtml]="post.content|safeHtml"></div>-->
       <!--</ng-template>-->
     </ng-container>
 
@@ -55,10 +55,11 @@
 </ng-container>
 
 <ng-template #container>
-  <div [innerHtml]="post.content|safeHtml"></div>
+  <!--<div [innerHtml]="post.content|safeHtml"></div>-->
   <!--{{post.content}}-->
 </ng-template>
 
 
 <!--TODO post-related-->
 <!--TODO post-copyright-->
+
