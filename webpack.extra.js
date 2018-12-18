@@ -13,12 +13,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       title: METADATA.title,
-      chunksSortMode: 'dependency',
+      chunks: ['styles', 'runtime', 'polyfills', 'main'],
+      chunksSortMode: 'manual',
       metadata: METADATA,
-      inject: 'head'
+      inject: 'head',
     }),
     new ScriptExtHtmlWebpackPlugin({
-      async: 'polyfills',
       defaultAttribute: 'defer'
     })
   ]
