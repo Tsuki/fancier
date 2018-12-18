@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {HexoConfig, Theme_config} from "app/model/site-config.class";
 import {Post} from "app/model/posts-list.class";
 import * as striptags from 'striptags';
@@ -16,15 +16,10 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
   @Input() isIndex: boolean;
   auto_excerpt = '';
 
-  @ViewChild('container', {read: ViewContainerRef})
-  container: ViewContainerRef;
-
-
   constructor() {
   }
 
   ngOnInit() {
-    console.log(this.post.photos);
   }
 
   ngAfterViewInit(): void {
