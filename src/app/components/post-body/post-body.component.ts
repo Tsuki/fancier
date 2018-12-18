@@ -1,15 +1,4 @@
-import {
-  AfterViewInit,
-  Compiler,
-  Component,
-  ComponentFactoryResolver,
-  Injector,
-  Input,
-  NgModuleRef,
-  OnInit,
-  ViewChild,
-  ViewContainerRef
-} from '@angular/core';
+import {AfterViewInit, Compiler, Component, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {HexoConfig, Theme_config} from "app/model/site-config.class";
 import {Post} from "app/model/posts-list.class";
 import * as striptags from 'striptags';
@@ -33,10 +22,7 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
   container: ViewContainerRef;
 
 
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private compiler: Compiler, private injector: Injector, private ngModuleRef: NgModuleRef<any>,
-  ) {
+  constructor(private compiler: Compiler) {
   }
 
   ngOnInit() {
@@ -50,9 +36,7 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
     this.compiler.compileModuleAndAllComponentsAsync(tmpModule).then(
       (factories) => {
         const factory = factories.componentFactories.find(f => f.componentType === tmpComponent);
-        const cmpRef = factory.create(this.injector, [], null, this.ngModuleRef);
-        cmpRef.instance.name = 'dynamic';
-        this.container.insert(cmpRef.hostView);
+        this.container.createComponent(factory);
       }
     )
   }
