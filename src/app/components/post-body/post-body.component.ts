@@ -20,16 +20,14 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
   container: ViewContainerRef;
 
 
-  constructor(
-  ) {
+  constructor() {
   }
 
   ngOnInit() {
+    console.log(this.post.photos);
   }
 
   ngAfterViewInit(): void {
-    if (this.isIndex && this.readMoreType != 4)
-      return;
   }
 
   get readMoreType() {

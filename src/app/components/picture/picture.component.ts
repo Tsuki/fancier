@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
-  selector: 'nat-picture',
+  selector: 'app-picture',
   templateUrl: './picture.component.html',
   styleUrls: ['./picture.component.styl'],
   encapsulation: ViewEncapsulation.ShadowDom

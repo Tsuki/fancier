@@ -47,15 +47,10 @@ import {PostFooterComponent} from './components/post-footer/post-footer.componen
 import {PostRelatedComponent} from './components/post-related/post-related.component';
 import {PostCopyrightComponent} from './components/post-copyright/post-copyright.component';
 import {PictureComponent} from './components/picture/picture.component';
-import {JitCompilerFactory} from "@angular/platform-browser-dynamic";
 import {createCustomElement} from "@angular/elements";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
-export function createJitCompiler() {
-  return new JitCompilerFactory().createCompiler([{useJit: true}]);
 }
 
 
@@ -89,7 +84,9 @@ const COMPONENT = [
     ...COMPONENT
   ],
   entryComponents: [
-    ArticleComponent, PostPageComponent, PictureComponent
+    ArticleComponent,
+    PostPageComponent,
+    PictureComponent
   ],
   imports: [
     BrowserModule,
@@ -108,7 +105,6 @@ const COMPONENT = [
     })
   ],
   providers: [
-    // {provide: Compiler, useFactory: createJitCompiler},
     ApiService,
     // TODO move to app init
     {provide: DISQUS_SHORTNAME, useValue: 'tsukiblog'},
@@ -121,7 +117,7 @@ const COMPONENT = [
 export class AppModule {
   constructor(private faIconService: FaIconService, private injector: Injector) {
     const customButton = createCustomElement(PictureComponent, {injector});
-    customElements.define('nat-picture', customButton);
+    customElements.define('nat-picture', <Function>customButton);
     library.add(faHome, faTh, faArchive, faUser,
       faCalendarAlt, faCalendarCheck, faFolder, faComment,
       faAngleLeft, faAngleRight, faChartArea, faCoffee,
