@@ -181,6 +181,13 @@
   dependencies:
     tslib "^1.9.0"
 
+"@angular/elements@^7.1.3":
+  version "7.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/elements/-/elements-7.1.3.tgz#372366596b7b4fec43887139ce43fa7c54293431"
+  integrity sha512-Xvi42HON7XaEagqeAeAV0JnXBcRpEDJr461t2bpZMCTZckKeL5w0SLskZWAc978cKQP33N3MZibbgSK1gurklw==
+  dependencies:
+    tslib "^1.9.0"
+
 "@angular/forms@~7.1.0":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-7.1.1.tgz#d16ef10a901c007062fd19144cd77917ef55ee24"
@@ -2250,6 +2257,13 @@ dns-txt@^2.0.2:
   integrity sha1-uR2Ab10nGI5Ks+fRB9iBocxGQrY=
   dependencies:
     buffer-indexof "^1.0.0"
+
+document-register-element@^1.7.2:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/document-register-element/-/document-register-element-1.13.1.tgz#dad8cb7be38e04ee3f56842e6cf81af46c1249ba"
+  integrity sha512-92ZyLDKg9j4rOll//NNXj25f+8rAzOkYsGJonhugKwXfeqH7bzs8Ucpvey0WzZ2ZzKdrvW9RnUw3UyOZ/uhBFw==
+  dependencies:
+    lightercollective "^0.1.0"
 
 dom-converter@~0.2:
   version "0.2.0"
@@ -4428,6 +4442,11 @@ lie@~3.1.0:
   integrity sha1-mkNrLMd0bKWd56QfpGmz77dr2H4=
   dependencies:
     immediate "~3.0.5"
+
+lightercollective@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/lightercollective/-/lightercollective-0.1.0.tgz#70df102c530dcb8d0ccabfe6175a8d00d5f61300"
+  integrity sha512-J9tg5uraYoQKaWbmrzDDexbG6hHnMcWS1qLYgJSWE+mpA3U5OCSeMUhb+K55otgZJ34oFdR0ECvdIb3xuO5JOQ==
 
 load-json-file@^1.0.0:
   version "1.1.0"

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {HexoConfig, Theme_config} from "~/model/site-config.class";
 import {Article} from "~/model/posts-list.class";
 import {ApiService} from "~/service/api.service";
@@ -9,7 +9,8 @@ import {tap} from "rxjs/operators";
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.styl']
+  styleUrls: ['./article.component.styl'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements OnInit {
   hexoConfig: HexoConfig;
@@ -23,6 +24,7 @@ export class ArticleComponent implements OnInit {
     private api: ApiService,
     private route: ActivatedRoute,
     private osbService: ObservableService,
+    private cdr: ChangeDetectorRef
   ) {
     this.osbService.setPageClass('page-post-detail');
     this.json = this.route.snapshot.data.json;
@@ -37,8 +39,9 @@ export class ArticleComponent implements OnInit {
     this.api.fetchPostBySlug(this.json).pipe(
       tap(value => this.article = value),
       tap(() => {
-        this.article.content = this.article.content.replace(/<img(.*?)>/g, '<picture$1></picture>')
-      })
+        this.article.content = this.article.content.replace(/<img(.*?)>/g, '<nat-picture$1></nat-picture>')
+      }),
+      tap(() => this.cdr.detectChanges()),
     ).subscribe();
   }
 }

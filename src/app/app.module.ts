@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {Injector, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -47,10 +47,12 @@ import {PostFooterComponent} from './components/post-footer/post-footer.componen
 import {PostRelatedComponent} from './components/post-related/post-related.component';
 import {PostCopyrightComponent} from './components/post-copyright/post-copyright.component';
 import {PictureComponent} from './components/picture/picture.component';
+import {createCustomElement} from "@angular/elements";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
 
 const COMPONENT = [
   AppComponent,
@@ -82,7 +84,9 @@ const COMPONENT = [
     ...COMPONENT
   ],
   entryComponents: [
-    ArticleComponent, PostPageComponent
+    ArticleComponent,
+    PostPageComponent,
+    PictureComponent
   ],
   imports: [
     BrowserModule,
@@ -107,13 +111,13 @@ const COMPONENT = [
     {provide: RequestCache, useClass: RequestCacheWithMap},
     {provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true}
   ],
-  exports: [
-    ...COMPONENT
-  ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private faIconService: FaIconService) {
+  constructor(private faIconService: FaIconService, private injector: Injector) {
+    const customButton = createCustomElement(PictureComponent, {injector});
+    customElements.define('nat-picture', <Function>customButton);
     library.add(faHome, faTh, faArchive, faUser,
       faCalendarAlt, faCalendarCheck, faFolder, faComment,
       faAngleLeft, faAngleRight, faChartArea, faCoffee,

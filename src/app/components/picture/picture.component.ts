@@ -1,9 +1,10 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
-  selector: 'picture',
+  selector: 'app-picture',
   templateUrl: './picture.component.html',
-  styleUrls: ['./picture.component.styl']
+  styleUrls: ['./picture.component.styl'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class PictureComponent implements OnInit, AfterViewInit {
   @Input('webp') isWebp = true;

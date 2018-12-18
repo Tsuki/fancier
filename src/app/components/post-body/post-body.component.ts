@@ -1,9 +1,7 @@
-import {AfterViewInit, Compiler, Component, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {HexoConfig, Theme_config} from "app/model/site-config.class";
 import {Post} from "app/model/posts-list.class";
 import * as striptags from 'striptags';
-import {compileToComponent, compileToModule} from "~/utils/utils";
-import {AppModule} from "~/app.module";
 
 @Component({
   selector: 'app-post-body',
@@ -18,27 +16,13 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
   @Input() isIndex: boolean;
   auto_excerpt = '';
 
-  @ViewChild('container', {read: ViewContainerRef})
-  container: ViewContainerRef;
-
-
-  constructor(private compiler: Compiler) {
+  constructor() {
   }
 
   ngOnInit() {
   }
 
   ngAfterViewInit(): void {
-    if (this.isIndex && this.readMoreType != 4)
-      return;
-    const tmpComponent = compileToComponent(this.post.content);
-    const tmpModule = compileToModule([tmpComponent], [AppModule]);
-    this.compiler.compileModuleAndAllComponentsAsync(tmpModule).then(
-      (factories) => {
-        const factory = factories.componentFactories.find(f => f.componentType === tmpComponent);
-        this.container.createComponent(factory);
-      }
-    )
   }
 
   get readMoreType() {

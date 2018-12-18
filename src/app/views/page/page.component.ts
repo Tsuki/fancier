@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnInit} from '@angular/core';
 import {HexoConfig, Theme_config} from '~/model/site-config.class';
 import {ApiService} from '~/service/api.service';
 import {switchMap, tap} from 'rxjs/operators';
@@ -11,7 +11,8 @@ import {postAnimation} from "~/utils/animation";
   selector: 'app-page',
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.styl'],
-  animations: [postAnimation]
+  animations: [postAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageComponent implements OnInit {
   hexoConfig: HexoConfig;
@@ -26,6 +27,7 @@ export class PageComponent implements OnInit {
     private api: ApiService,
     private route: ActivatedRoute,
     private osbService: ObservableService,
+    private cdr: ChangeDetectorRef
   ) {
     this.isIndex = route.snapshot.data['isIndex'] == true;
     this.osbService.setPageClass(this.isIndex ? 'page-home' : 'page-post-detail');
@@ -49,7 +51,8 @@ export class PageComponent implements OnInit {
 
   initPageJson() {
     this.api.fetchPostsList(this.currentPage).pipe(
-      tap(value => this.postsList = value)
+      tap(value => this.postsList = value),
+      tap(() => this.cdr.detectChanges()),
     ).subscribe(() => this.useMotion = true)
   }
 

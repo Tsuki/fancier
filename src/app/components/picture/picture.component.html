@@ -1,4 +1,6 @@
-<source type="image/webp" [srcset]="srcset_webp">
-<source [type]="type_ori" [srcset]="srcset_ori">
-<img [src]="src" [alt]="alt" *ngIf=deferLoad|async>
+<picture class="post-gallery-img">
+  <source type="image/webp" [srcset]="srcset_webp">
+  <source [type]="type_ori" [srcset]="srcset_ori">
+  <img [src]="src" [alt]="alt" *ngIf=deferLoad|async>
+</picture>
 
