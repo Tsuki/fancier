@@ -1,20 +1,7 @@
-import {
-  AfterViewInit,
-  Compiler,
-  Component,
-  ComponentFactoryResolver,
-  Injector,
-  Input,
-  NgModuleRef,
-  OnInit,
-  ViewChild,
-  ViewContainerRef
-} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {HexoConfig, Theme_config} from "app/model/site-config.class";
 import {Post} from "app/model/posts-list.class";
 import * as striptags from 'striptags';
-import {compileToComponent, compileToModule} from "~/utils/utils";
-import {AppModule} from "~/app.module";
 
 @Component({
   selector: 'app-post-body',
@@ -34,8 +21,6 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
 
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private compiler: Compiler, private injector: Injector, private ngModuleRef: NgModuleRef<any>,
   ) {
   }
 
@@ -45,16 +30,6 @@ export class PostBodyComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.isIndex && this.readMoreType != 4)
       return;
-    const tmpComponent = compileToComponent(this.post.content);
-    const tmpModule = compileToModule([tmpComponent], [AppModule]);
-    this.compiler.compileModuleAndAllComponentsAsync(tmpModule).then(
-      (factories) => {
-        const factory = factories.componentFactories.find(f => f.componentType === tmpComponent);
-        const cmpRef = factory.create(this.injector, [], null, this.ngModuleRef);
-        cmpRef.instance.name = 'dynamic';
-        this.container.insert(cmpRef.hostView);
-      }
-    )
   }
 
   get readMoreType() {

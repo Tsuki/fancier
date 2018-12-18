@@ -19,7 +19,7 @@ module.exports = {
       inject: 'head',
     }),
     new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'defer'
+      defaultAttribute: 'async'
     })
   ]
 };

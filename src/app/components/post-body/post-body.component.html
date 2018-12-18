@@ -5,7 +5,7 @@
       <!--<a rel="gallery_{{post._id}}" itemscope [href]="photo" itemtype="http://schema.org/ImageObject"-->
       <!--itemprop="url"> </a>-->
       <!--TODO multiple image fix-->
-      <picture class="post-gallery-img" [src]="photo" itemprop="contentUrl"></picture>
+      <nat-picture class="post-gallery-img" [src]="photo" itemprop="contentUrl"></nat-picture>
       <!--</div>-->
     </ng-container>
 
@@ -56,7 +56,7 @@
 </ng-container>
 
 <ng-template #container>
-  <!--<div [innerHtml]="post.content|safeHtml"></div>-->
+  <div [innerHtml]="post.content|safeHtml"></div>
   <!--{{post.content}}-->
 </ng-template>
 
