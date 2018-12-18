@@ -121,7 +121,7 @@ const COMPONENT = [
 export class AppModule {
   constructor(private faIconService: FaIconService, private injector: Injector) {
     const customButton = createCustomElement(PictureComponent, {injector});
-    customElements.define('app-picture', customButton);
+    customElements.define('nat-picture', customButton);
     library.add(faHome, faTh, faArchive, faUser,
       faCalendarAlt, faCalendarCheck, faFolder, faComment,
       faAngleLeft, faAngleRight, faChartArea, faCoffee,

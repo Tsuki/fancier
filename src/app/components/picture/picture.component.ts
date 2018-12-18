@@ -4,7 +4,7 @@ import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, ViewE
   selector: 'nat-picture',
   templateUrl: './picture.component.html',
   styleUrls: ['./picture.component.styl'],
-  encapsulation: ViewEncapsulation.Native
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class PictureComponent implements OnInit, AfterViewInit {
   @Input('webp') isWebp = true;
