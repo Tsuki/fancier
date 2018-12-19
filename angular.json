@@ -43,7 +43,11 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              {"glob": "**/*", "input": "node_modules/@webcomponents/webcomponentsjs/bundles", "output": "./bundles"},
+              {
+                "glob": "**/*",
+                "input": "node_modules/@webcomponents/webcomponentsjs/bundles",
+                "output": "./bundles"
+              },
               "src/favicon.ico",
               "src/assets"
             ],
@@ -53,6 +57,10 @@
             "scripts": [
               {
                 "input": "node_modules/document-register-element/build/document-register-element.js"
+              },
+              {
+                "input": "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js",
+                "bundleName": "webcomponents-loader"
               }
             ]
           },
