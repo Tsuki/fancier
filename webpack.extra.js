@@ -7,13 +7,14 @@ const METADATA = {
   // isDevServer: helpers.isWebpackDevServer(),
   // HMR: HMR
 };
+
 module.exports = {
   plugins: [
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       title: METADATA.title,
-      chunks: ['styles', 'runtime', 'polyfills', 'webcomponents-loader', 'scripts', 'main'],
+      chunks: ['styles', 'runtime', 'polyfills', 'webcomponents-loader.js', 'scripts', 'main'],
       chunksSortMode: 'manual',
       metadata: METADATA,
       inject: 'head',
@@ -22,4 +23,5 @@ module.exports = {
       defaultAttribute: 'async'
     })
   ]
-};
+}
+;
