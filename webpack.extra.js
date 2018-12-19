@@ -14,7 +14,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       title: METADATA.title,
-      chunks: ['styles', 'runtime', 'polyfills', 'webcomponents-loader.js', 'scripts', 'main'],
+      chunks: ['styles', 'runtime', 'polyfills', 'webcomponents-loader', 'scripts', 'main'],
       chunksSortMode: 'manual',
       metadata: METADATA,
       inject: 'head',

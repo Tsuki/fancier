@@ -60,7 +60,8 @@
               },
               {
                 "input": "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js",
-                "bundleName": "webcomponents-loader.js"
+                "bundleName": "webcomponents-loader",
+                "lazy": true
               }
             ]
           },
