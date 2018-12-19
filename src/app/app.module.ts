@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {Injector, NgModule} from '@angular/core';
+import {ApplicationRef, DoBootstrap, Injector, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -114,9 +114,12 @@ const COMPONENT = [
   exports: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
   constructor(private faIconService: FaIconService, private injector: Injector) {
-    const customButton = createCustomElement(PictureComponent, {injector});
+  }
+
+  ngDoBootstrap(appRef: ApplicationRef): void {
+    const customButton = createCustomElement(PictureComponent, {injector: this.injector});
     customElements.define('nat-picture', <Function>customButton);
     library.add(faHome, faTh, faArchive, faUser,
       faCalendarAlt, faCalendarCheck, faFolder, faComment,
@@ -124,4 +127,5 @@ export class AppModule {
       faChevronLeft, faChevronRight);
     this.faIconService.defaultPrefix = 'fas';
   }
+
 }

@@ -43,11 +43,6 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "node_modules/@webcomponents/webcomponentsjs/bundles",
-                "output": "./bundles"
-              },
               "src/favicon.ico",
               "src/assets"
             ],
