@@ -22,7 +22,7 @@
 
       </div>
 
-      <div class="site-nav-toggle">
+      <div class="site-nav-toggle" (click)="navToggle()">
         <button [attr.aria-label]="'accessibility.nav_toggle'|translate">
           <span class="btn-bar"></span>
           <span class="btn-bar"></span>
@@ -31,6 +31,6 @@
       </div>
     </div>
 
-    <app-site-nav [hexoConfig]="hexoConfig" [theme]="theme"></app-site-nav>
+    <app-site-nav [hexoConfig]="hexoConfig" [theme]="theme" [navClassOn]="navClassOn"></app-site-nav>
   </div>
 </header>

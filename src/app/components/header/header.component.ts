@@ -22,7 +22,7 @@ import {animate, group, query, stagger, style, transition, trigger} from "@angul
         query('.menu-item', stagger('200ms', [
           animate('.3s ease-in', style({opacity: 1, transform: 'translateY(0)'}))]))
       ])
-    ])
+    ]),
   ]
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @Input() hexoConfig: HexoConfig;
   @Input() theme: Theme_config;
   @HostBinding('@header') useMotion;
+  navClassOn = false;
 
   constructor() {
   }
@@ -40,4 +41,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
   }
+
+  navToggle() {
+    this.navClassOn = !this.navClassOn;
+  }
+
+  //TODO Add animate
+
 }
