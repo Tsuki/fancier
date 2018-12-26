@@ -6,6 +6,7 @@ import {PostsList} from '~/model/posts-list.class';
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {ObservableService} from "~/service/observable.service";
 import {postAnimation} from "~/utils/animation";
+import {environment} from "~env/environment";
 
 @Component({
   selector: 'app-page',
@@ -20,7 +21,7 @@ export class PageComponent implements OnInit {
   postsList: PostsList;
   isIndex = false;
   currentPage: number = 1;
-  mid_size = 1;
+  mid_size = environment.mid_size;
   @HostBinding('@post') useMotion = false;
 
   constructor(

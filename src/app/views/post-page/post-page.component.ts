@@ -19,7 +19,6 @@ export class PostPageComponent implements OnInit {
   article: Article;
   isIndex = false;
   json: string;
-  pageId: string;
 
   constructor(
     private api: ApiService,
@@ -29,7 +28,6 @@ export class PostPageComponent implements OnInit {
   ) {
     this.osbService.setPageClass('page-post-detail');
     this.json = this.route.snapshot.data.json;
-    this.pageId = this.route.snapshot.routeConfig.path + '/';
   }
 
   ngOnInit() {

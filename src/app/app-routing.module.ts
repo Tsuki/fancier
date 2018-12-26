@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {NotFoundComponent} from './views/not-found/not-found.component';
 import {ArchiveComponent} from './views/archive/archive.component';
 import {PageComponent} from './views/page/page.component';
@@ -9,13 +9,17 @@ import {TagComponent} from './views/tag/tag.component';
 const routes: Routes = [
   {
     path: '',
-    component: PageComponent, data: {isIndex: true}
-  }, {
-    path: 'page/:page',
-    component: PageComponent, data: {isIndex: true}
+    data: {isIndex: true},
+    children: [
+      {path: '', component: PageComponent},
+      {path: 'page/:page', component: PageComponent}
+    ],
   }, {
     path: 'archives',
-    component: ArchiveComponent
+    children: [
+      {path: '', component: ArchiveComponent},
+      {path: 'page/:page', component: ArchiveComponent}
+    ],
   }, {
     path: 'categories',
     component: CategoryComponent

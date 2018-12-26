@@ -14,6 +14,7 @@ import {
   faChevronLeft,
   faChevronRight,
   faCoffee,
+  faExternalLinkAlt,
   faHome,
   faTh,
   faUser
@@ -48,6 +49,8 @@ import {PostRelatedComponent} from './components/post-related/post-related.compo
 import {PostCopyrightComponent} from './components/post-copyright/post-copyright.component';
 import {PictureComponent} from './components/picture/picture.component';
 import {createCustomElement} from "@angular/elements";
+import {TransPipe} from './pipe/trans.pipe';
+import {PostCollapseComponent} from './components/post-collapse/post-collapse.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -81,7 +84,9 @@ const COMPONENT = [
 
 @NgModule({
   declarations: [
-    ...COMPONENT
+    ...COMPONENT,
+    TransPipe,
+    PostCollapseComponent
   ],
   entryComponents: [
     ArticleComponent,
@@ -121,7 +126,7 @@ export class AppModule {
     library.add(faHome, faTh, faArchive, faUser,
       faCalendarAlt, faCalendarCheck, faFolder, faComment,
       faAngleLeft, faAngleRight, faChartArea, faCoffee,
-      faChevronLeft, faChevronRight);
+      faChevronLeft, faChevronRight, faExternalLinkAlt);
     this.faIconService.defaultPrefix = 'fas';
   }
 }
