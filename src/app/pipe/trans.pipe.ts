@@ -10,7 +10,7 @@ export class TransPipe implements PipeTransform {
   }
 
 
-  async transform(value: any, args?: any): any {
+  async transform(value: string, args?: any): Promise<string> {
     const result = await this.translate.get(value).toPromise();
     if (args === undefined) {
       return result;

@@ -1,8 +1,8 @@
 <nav class="site-nav site-nav-on" [@slideInOut]="navClassOn" [@slideInOut2]="navClassOn">
   <ul id="menu" class="menu" *ngIf="theme.menu">
-    <ng-container *ngFor="let menu of theme.menu|keyvalue:noOrder">
+    <ng-container *ngFor="let menu of theme.menu|keyvalue:noOrder;first as isFirst">
       <li class="menu-item menu-item-{{ menu.key }}"
-          routerLinkActive="menu-item-active" [routerLinkActiveOptions]="{exact:true}">
+          routerLinkActive="menu-item-active" [routerLinkActiveOptions]="{exact:isFirst}">
 
         <a rel="section" [routerLink]="menu.value.split('||')[0].trim()"
            [attr.aria-label]="menu.value.split('||')[0].trim()">
