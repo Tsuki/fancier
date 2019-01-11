@@ -1,7 +1,7 @@
 <article [class]="['post','post-type-'+(post.type||'normal')]" itemscope itemtype="http://schema.org/Article">
   <header class="post-header">
     <h3 class="post-title">
-      <a class="post-title-link post-title-link-external" target="_blank" [href]="'/'+post.link" itemprop="url"
+      <a class="post-title-link post-title-link-external" target="_blank" [href]="post.permalink" itemprop="url"
          *ngIf="post.link">
         {{ post.title|| post.link }}
         <fa-icon class="fa" [icon]="'external-link'"></fa-icon>
