@@ -5,7 +5,7 @@
       {{'cheers.'+cheers|translate}}! {{'counter.archive_posts'|trans:postsLength|async}} {{'keep_on'|translate}}
     </span>
     <ng-container *ngFor="let post of posts;index as i; first as isFirst">
-      <div class="collection-title" *ngIf="isFirst || fnsFormat(post.date,'yyyy')!=fnsFormat(posts[i-1].date,'yyyy')">
+      <div class="collection-title" *ngIf="isFirst || fnsFormat(post.date,'yyyy')!==fnsFormat(posts[i-1].date,'yyyy')">
         <h2 class="archive-year" [id]="'archive-year-'+(post.date|date:'yyyy')">{{post.date|date:'yyyy'}}</h2>
       </div>
       <app-post-collapse [post]="post" [config]="hexoConfig"></app-post-collapse>

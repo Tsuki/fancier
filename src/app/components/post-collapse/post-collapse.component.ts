@@ -9,7 +9,7 @@ import {HexoConfig} from "~/model/site-config.class";
 })
 export class PostCollapseComponent implements OnInit {
   @Input() post: Post;
-  @Input() config: HexoConfig
+  @Input() config: HexoConfig;
 
   constructor() {
   }
