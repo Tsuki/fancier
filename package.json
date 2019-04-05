@@ -34,6 +34,7 @@
     "@webcomponents/webcomponentsjs": "^2.2.1",
     "core-js": "^2.5.4",
     "date-fns": "^1.30.1",
+    "default-passive-events": "^1.0.10",
     "document-register-element": "^1.13.1",
     "ngx-build-plus": "^7.3.0",
     "ngx-disqus": "^2.4.3",
