@@ -1,11 +1,11 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {HexoConfig, Theme_config} from "~/model/site-config.class";
-import {Post, PostsList} from "~/model/posts-list.class";
-import {ApiService} from "~/service/api.service";
+import {HexoConfig, Theme_config} from "~/app/model/site-config.class";
+import {Post, PostsList} from "~/app/model/posts-list.class";
+import {ApiService} from "~/app/service/api.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {ObservableService} from "~/service/observable.service";
+import {ObservableService} from "~/app/service/observable.service";
 import {switchMap, tap} from "rxjs/operators";
-import {environment} from "~env/environment";
+import {environment} from '~/environments/environment';
 import {format} from 'date-fns'
 
 @Component({

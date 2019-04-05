@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnInit} from '@angular/core';
-import {HexoConfig, Theme_config} from '~/model/site-config.class';
-import {ApiService} from '~/service/api.service';
+import {HexoConfig, Theme_config} from '~/app/model/site-config.class';
+import {ApiService} from '~/app/service/api.service';
 import {switchMap, tap} from 'rxjs/operators';
-import {PostsList} from '~/model/posts-list.class';
+import {PostsList} from '~/app/model/posts-list.class';
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {ObservableService} from "~/service/observable.service";
-import {postAnimation} from "~/utils/animation";
-import {environment} from "~env/environment";
+import {ObservableService} from "~/app/service/observable.service";
+import {postAnimation} from "~/app/utils/animation";
+import {environment} from '~/environments/environment';
 
 @Component({
   selector: 'app-page',

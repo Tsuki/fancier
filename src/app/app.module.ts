@@ -52,7 +52,7 @@ import {createCustomElement} from "@angular/elements";
 import {TransPipe} from './pipe/trans.pipe';
 import {PostCollapseComponent} from './components/post-collapse/post-collapse.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import {environment} from '~env/environment';
+import {environment} from '~/environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

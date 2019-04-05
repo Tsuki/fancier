@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Post} from "~/model/posts-list.class";
-import {HexoConfig} from "~/model/site-config.class";
+import {Post} from "~/app/model/posts-list.class";
+import {HexoConfig} from "~/app/model/site-config.class";
 
 @Component({
   selector: 'app-post-collapse',

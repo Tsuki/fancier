@@ -17,13 +17,10 @@
       "es2018",
       "dom"
     ],
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
       "~/*": [
-        "app/*"
-      ],
-      "~env/*": [
-        "environments/*"
+        "src/*"
       ]
     }
   }

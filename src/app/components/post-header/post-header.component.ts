@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Post} from "app/model/posts-list.class";
-import {HexoConfig, Theme_config} from "app/model/site-config.class";
+import {Post} from "~/app/model/posts-list.class";
+import {HexoConfig, Theme_config} from "~/app/model/site-config.class";
 import {format, isSameDay, isSameSecond} from "date-fns";
 import {TranslateService} from "@ngx-translate/core";
 

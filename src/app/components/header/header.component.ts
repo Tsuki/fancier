@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, HostBinding, Input, OnInit} from '@angular/core';
-import {HexoConfig, Theme_config} from "~/model/site-config.class";
+import {HexoConfig, Theme_config} from "~/app/model/site-config.class";
 import {animate, group, query, stagger, style, transition, trigger} from "@angular/animations";
 
 @Component({

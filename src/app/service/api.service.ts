@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {HexoConfig} from "~/model/site-config.class";
-import {Article, Category, Page, PostsList, SpecificPostsList, Tag} from "~/model/posts-list.class";
+import {HexoConfig} from "~/app/model/site-config.class";
+import {Article, Category, Page, PostsList, SpecificPostsList, Tag} from "~/app/model/posts-list.class";
 import {Observable} from "rxjs";
 
 @Injectable({

@@ -2,13 +2,13 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ApiService} from './service/api.service';
 import {tap} from 'rxjs/operators';
-import {HexoConfig, Theme_config} from '~/model/site-config.class';
+import {HexoConfig, Theme_config} from '~/app/model/site-config.class';
 import {Title} from '@angular/platform-browser';
 import {Router} from "@angular/router";
-import {PostPageComponent} from "~/views/post-page/post-page.component";
+import {PostPageComponent} from "~/app/views/post-page/post-page.component";
 import {Route} from "@angular/router/src/config";
-import {ObservableService} from "~/service/observable.service";
-import {ArticleComponent} from "~/views/article/article.component";
+import {ObservableService} from "~/app/service/observable.service";
+import {ArticleComponent} from "~/app/views/article/article.component";
 
 @Component({
   selector: 'app-root',

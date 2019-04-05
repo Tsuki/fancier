@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HexoConfig, Theme_config} from "app/model/site-config.class";
-import {Post} from "app/model/posts-list.class";
+import {HexoConfig, Theme_config} from "~/app/model/site-config.class";
+import {Post} from "~/app/model/posts-list.class";
 
 @Component({
   selector: 'div[app-post]',

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HexoConfig, Theme_config} from "~/model/site-config.class";
+import {HexoConfig, Theme_config} from "~/app/model/site-config.class";
 import {format} from 'date-fns'
-import {environment} from "~env/environment";
+import {environment} from '~/environments/environment';
 
 @Component({
   selector: 'app-footer',
