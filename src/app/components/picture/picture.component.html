@@ -1,5 +1,7 @@
 <picture class="post-gallery-img">
-  <source type="image/webp" [srcset]="srcset_webp">
+  <ng-template [ngIf]="srcset_webp">
+    <source type="image/webp" [srcset]="srcset_webp">
+  </ng-template>
   <source [type]="type_ori" [srcset]="srcset_ori">
   <img [src]="src" [alt]="alt" *ngIf=deferLoad|async>
 </picture>

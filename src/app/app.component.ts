@@ -4,11 +4,10 @@ import {ApiService} from './service/api.service';
 import {tap} from 'rxjs/operators';
 import {HexoConfig, Theme_config} from '~/app/model/site-config.class';
 import {Title} from '@angular/platform-browser';
-import {Router} from "@angular/router";
-import {PostPageComponent} from "~/app/views/post-page/post-page.component";
-import {Route} from "@angular/router/src/config";
-import {ObservableService} from "~/app/service/observable.service";
-import {ArticleComponent} from "~/app/views/article/article.component";
+import {Router, Route} from '@angular/router';
+import {PostPageComponent} from '~/app/views/post-page/post-page.component';
+import {ObservableService} from '~/app/service/observable.service';
+import {ArticleComponent} from '~/app/views/article/article.component';
 
 @Component({
   selector: 'app-root',

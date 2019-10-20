@@ -53,6 +53,7 @@ import {TransPipe} from './pipe/trans.pipe';
 import {PostCollapseComponent} from './components/post-collapse/post-collapse.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '~/environments/environment';
+import {CommonModule} from '@angular/common';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -96,6 +97,7 @@ const COMPONENT = [
     PictureComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     // NoopAnimationsModule,
